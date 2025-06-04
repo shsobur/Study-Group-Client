@@ -184,11 +184,11 @@ nav {
 
 .main_mobile_menu_container {
   width: 60%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 55px);
   padding: 20px;
   color: #151515;
   position: absolute;
-  top: 60px;
+  top: 55px;
   right: 0;
   background-color: #dfdedef1;
   backdrop-filter: blur(20px);
@@ -251,12 +251,12 @@ nav {
 }
 
 @media screen and (max-width: 1024px) {
-  .navbar_logo {
-    font-size: 2rem;
+  .navbar_logo span {
+    font-size: 1.7rem;
   }
 
   .navbar_logo img {
-    width: 35px;
+    width: 30px;
   }
 
   .navbar_content_container {
@@ -295,7 +295,7 @@ nav {
     margin-bottom: 60px;
   }
 
-  .navbar_logo {
+  .navbar_logo span {
     font-size: 1.6rem;
   }
 
@@ -314,7 +314,16 @@ nav {
     margin-bottom: 55px;
   }
 
+  .navbar_logo span {
+    font-size: 1.5rem;
+  }
+
   .main_mobile_menu_container {
     width: 100%;
+  }
+
+  .main_mobile_menu_container {
+    top: 46px;
+    height: calc(100vh - 46px);
   }
 }
