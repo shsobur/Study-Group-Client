@@ -1,6 +1,8 @@
 // File path__
 import Main from "../Layouts/Main/Main";
 import ErrorPage from "../Layouts/Components/Error/ErrorPage";
+import SignIn from "../Layouts/Pages/Authentication/SignIn/SignIn";
+import SignUp from "../Layouts/Pages/Authentication/SignUp/SignUp";
 import HomePageLayout from "../Layouts/Pages/Home/HomePageLayout/HomePageLayout";
 
 // Package__
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePageLayout></HomePageLayout>,
+      },
+      {
+        path: "/sign-in",
+        element: <SignIn></SignIn>,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp></SignUp>,
       },
     ],
   },

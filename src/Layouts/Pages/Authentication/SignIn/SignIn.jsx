@@ -1,5 +1,5 @@
 // File path__
-import "./AuthStyle.css";
+import "../AuthStyle/AuthStyle.css";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
 

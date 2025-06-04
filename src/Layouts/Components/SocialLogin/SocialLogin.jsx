@@ -4,6 +4,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 
 // Packages__
 import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router";
 
 // From react__
