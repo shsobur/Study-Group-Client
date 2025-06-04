@@ -1,8 +1,12 @@
 import "./Footer.css";
-import { SiHomebridge } from "react-icons/si";
-import { MdOutlineLocationOn } from "react-icons/md";
+
+// React icons__
 import { AiOutlineMobile } from "react-icons/ai";
+import { MdOutlineLocationOn } from "react-icons/md";
 import { CiFacebook, CiInstagram, CiLinkedin, CiTwitter } from "react-icons/ci";
+
+// Imported package__
+import { Link } from "react-router";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,12 +19,7 @@ const Footer = () => {
             <div className="footer_content_top_container">
               <div id="footer_box-1" className="main_footer_title_container">
                 <div className="footer_main_title_container">
-                  <h3>
-                    <SiHomebridge />
-                  </h3>
-                  <h2>
-                    Reside<span className="text-[#ffffff]">Nest</span>
-                  </h2>
+                  <h2>PayTrack</h2>
                 </div>
 
                 <p>
@@ -32,27 +31,48 @@ const Footer = () => {
 
                 <div className="footer_social_icon">
                   <h4>
-                    <CiFacebook />
+                    <a href="https://www.facebook.com/zuck" target="main">
+                      <CiFacebook />
+                    </a>
                   </h4>
                   <h4>
-                    <CiLinkedin />
+                    <a
+                      href="https://www.linkedin.com/in/ryanroslansky/"
+                      target="main"
+                    >
+                      <CiLinkedin />
+                    </a>
                   </h4>
                   <h4>
-                    <CiInstagram />
+                    <a
+                      href="https://www.instagram.com/kevin/?hl=en"
+                      target="main"
+                    >
+                      <CiInstagram />
+                    </a>
                   </h4>
                   <h4>
-                    <CiTwitter />
+                    <a href="https://x.com/kevin" target="main">
+                      <CiTwitter />
+                    </a>
                   </h4>
                 </div>
               </div>
 
               <div id="footer_box-2" className="main_footer_Info_container">
                 <h2>Quick Links</h2>
-                <p>Home</p>
-                <p>Update Profile</p>
-                <p>Contact</p>
-                <p>FAQ</p>
-                <p>About Us</p>
+                <p>
+                  <Link to="/">Home</Link>
+                </p>
+                <p>
+                  <Link to="/bill">Bill</Link>
+                </p>
+                <p>
+                  <Link to="/about">About</Link>
+                </p>
+                <p>
+                  <Link to="/contact">Contact Us</Link>
+                </p>
               </div>
 
               <div id="footer_box-3" className="main_footer_Info_container">
@@ -83,7 +103,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="footer_bottam_container">
+            <div className="footer_bottom_container">
               <div>© Copyright Study Group {currentYear} All Right Reserved.</div>
               <div>
                 Terms Of Use <span className="pl-5 pr-5">|</span> Privacy Policy
