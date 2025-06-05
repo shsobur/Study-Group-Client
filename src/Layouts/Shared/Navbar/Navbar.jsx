@@ -1,25 +1,19 @@
 // File path__
 import "./Navbar.css";
-import { AuthContext } from "../../../Provider/AuthProvider";
 import logo from "../../../assets/logo.png";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 // Imported package__
 import Swal from "sweetalert2";
 import { Link, NavLink } from "react-router";
 // React icons__
-import { RxCross1, RxLapTimer } from "react-icons/rx";
 import { PiSignIn } from "react-icons/pi";
 import { IoIosMenu } from "react-icons/io";
+import { FiCheckSquare } from "react-icons/fi";
 import { IoHomeOutline } from "react-icons/io5";
-import { FiCheckSquare, FiMessageCircle } from "react-icons/fi";
-import { AiOutlineShopping } from "react-icons/ai";
 import { HiMiniUserCircle } from "react-icons/hi2";
-import { RiContactsBook2Line } from "react-icons/ri";
-import {
-  MdKeyboardArrowDown,
-  MdOutlineAssignment,
-  MdOutlineSpaceDashboard,
-} from "react-icons/md";
+import { RxCross1, RxLapTimer } from "react-icons/rx";
+import { MdKeyboardArrowDown, MdOutlineAssignment } from "react-icons/md";
 
 // From react__
 import { useRef } from "react";
@@ -33,14 +27,6 @@ const Navbar = () => {
   const [isScrollingDown, setIsScrollingDown] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  const [userImage, setUserImage] = useState(null);
-
-  // Handle use image__
-  useEffect(() => {
-    if (user) {
-      setUserImage(user.photoURL);
-    }
-  }, [user]);
 
   // Handle Close Dropdown__
   useEffect(() => {
@@ -148,62 +134,66 @@ const Navbar = () => {
               </NavLink>
             </ul>
 
-            <div className="dropdown_wrapper" ref={menuRef}>
-              <button
-                className="dropdown_button"
-                onClick={() => setOpen(!open)}
-              >
-                {userImage !== null ? (
-                  <img title={user.email} src={userImage} alt="Use Image" />
-                ) : (
-                  <HiMiniUserCircle />
-                )}
+            {user ? (
+              <div className="dropdown_wrapper" ref={menuRef}>
+                <button
+                  className="dropdown_button"
+                  onClick={() => setOpen(!open)}
+                >
+                  {user?.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt="User"
+                      title={user.email}
+                      onError={(e) => {
+                        console.log("Image failed:", user.photoURL);
+                        e.target.src = "https://i.pravatar.cc/150?img=3"; // fallback
+                      }}
+                    />
+                  ) : (
+                    <HiMiniUserCircle />
+                  )}
 
-                <span>
-                  <MdKeyboardArrowDown />
-                </span>
-              </button>
-
-              <div className={`dropdown_menu ${open ? "open" : ""}`}>
-                <h1 className="user_name">Hi, {user.displayName}</h1>
-                <hr></hr>
-                <hr></hr>
-
-                <Link to="/create-assignments">
-                  <span href="#" className="dropdown_item">
-                    <HiOutlinePencilAlt />
-                    Create Assignments
+                  <span>
+                    <MdKeyboardArrowDown />
                   </span>
-                </Link>
+                </button>
 
-                <Link to="/my-attempted-assignments">
-                  <span className="dropdown_item">
-                    <FiCheckSquare />
-                    My Attempted Assignments
-                  </span>
-                </Link>
+                <div className={`dropdown_menu ${open ? "open" : ""}`}>
+                  {user && (
+                    <h1 className="user_name">Hi, {user?.displayName}</h1>
+                  )}
+                  <hr></hr>
+                  <hr></hr>
 
-                {user ? (
-                  <span onClick={handleLogOut} className="dropdown_item">
-                    <PiSignIn /> Sign Out
-                  </span>
-                ) : (
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? "active_style" : ""
-                    }
-                    to="/sign-in"
-                  >
-                    <span
-                      onClick={() => setOpen(!open)}
-                      className="dropdown_item"
-                    >
-                      <PiSignIn /> Sign In
+                  <Link to="/create-assignments">
+                    <span href="#" className="dropdown_item">
+                      <HiOutlinePencilAlt />
+                      Create Assignments
                     </span>
-                  </NavLink>
-                )}
+                  </Link>
+
+                  <Link to="/my-attempted-assignments">
+                    <span className="dropdown_item">
+                      <FiCheckSquare />
+                      My Attempted Assignments
+                    </span>
+                  </Link>
+
+                  {user ? (
+                    <span onClick={handleLogOut} className="dropdown_item">
+                      <PiSignIn /> Sign Out
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
-            </div>
+            ) : (
+              <Link to="/sign-in">
+                <h2 className="sign_in_button">Sign In</h2>
+              </Link>
+            )}
 
             <div className="mobile_menu_container">
               <span onClick={() => setMenuOpen(!menuOpen)}>
@@ -223,7 +213,7 @@ const Navbar = () => {
                   className={({ isActive }) => (isActive ? "active_style" : "")}
                   to="/"
                 >
-                  <li>
+                  <li onClick={() => setMenuOpen(!menuOpen)}>
                     <IoHomeOutline /> _Home
                   </li>
                 </NavLink>
@@ -231,7 +221,7 @@ const Navbar = () => {
                   to="/assignments"
                   className={({ isActive }) => (isActive ? "active_style" : "")}
                 >
-                  <li>
+                  <li onClick={() => setMenuOpen(!menuOpen)}>
                     <MdOutlineAssignment /> _Assignments
                   </li>
                 </NavLink>
@@ -239,7 +229,7 @@ const Navbar = () => {
                   to="/pending-assignments"
                   className={({ isActive }) => (isActive ? "active_style" : "")}
                 >
-                  <li>
+                  <li onClick={() => setMenuOpen(!menuOpen)}>
                     <RxLapTimer /> _Pending Assignments
                   </li>
                 </NavLink>
@@ -253,12 +243,12 @@ const Navbar = () => {
                       isActive ? "dropdown_active_style" : ""
                     }
                   >
-                    <li>
+                    <li onClick={() => setMenuOpen(!menuOpen)}>
                       <HiOutlinePencilAlt /> Create Assignments
                     </li>
                   </NavLink>
                   <Link to="/dashboard">
-                    <li>
+                    <li onClick={() => setMenuOpen(!menuOpen)}>
                       <FiCheckSquare size={18} /> My Attempted Assignments
                     </li>
                   </Link>
@@ -274,7 +264,7 @@ const Navbar = () => {
                         isActive ? "dropdown_active_style" : ""
                       }
                     >
-                      <li>
+                      <li onClick={() => setMenuOpen(!menuOpen)}>
                         <PiSignIn />
                         Sign In
                       </li>

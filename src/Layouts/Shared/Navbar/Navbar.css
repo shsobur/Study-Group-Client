@@ -27,7 +27,7 @@ nav {
 }
 
 .navbar_content_container {
-  width: 80%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -175,6 +175,20 @@ nav {
   background-color: #ecedee;
 }
 
+.sign_in_button {
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #0564b4;
+  border: 2px solid #0564b4;
+}
+
+.sign_in_button:hover {
+  background-color: #f7f7f7;
+}
+
 /* Mobile menu style__ */
 
 .mobile_menu_container {
@@ -274,6 +288,10 @@ nav {
   }
 
   .dropdown_wrapper {
+    display: none;
+  }
+
+  .sign_in_button {
     display: none;
   }
 
