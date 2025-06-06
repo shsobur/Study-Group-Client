@@ -1,15 +1,23 @@
 import "./CreateAssign.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FcOk } from "react-icons/fc";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const CreateAssign = () => {
+  const { user } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+
   const [title, setTitle] = useState("");
+  const [image, setImage] = useState(null);
   const [subject, setSubject] = useState("");
   const [level, setLevel] = useState("");
   const [topicName, setTopicName] = useState("");
   const [instruction, setInstruction] = useState("");
   const [mark, setMark] = useState(30);
   const [questions, setQuestions] = useState([""]);
+  const noImage = "https://i.postimg.cc/mr6N2bMP/no-image.png";
 
   const handleQuestionChange = (index, value) => {
     const updated = [...questions];
@@ -21,11 +29,16 @@ const CreateAssign = () => {
     setQuestions([...questions, ""]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (image === null) {
+      setImage(noImage);
+    }
 
     const assignment = {
       title,
+      image,
       subject,
       level,
       topicName,
@@ -35,11 +48,30 @@ const CreateAssign = () => {
         question: q,
       })),
       mark: Number(mark),
-      createdTime: new Date().toISOString(),
+      createdTime: new Date().toLocaleDateString("en-GB").split("/").join("-"),
+      totalSubmit: 0,
+      createdBy: {
+        name: user.displayName,
+        email: user.email,
+      },
     };
 
-    console.log(assignment);
-    // You can send this object to your backend here
+    const res = await axiosPublic.post("/new-assignment", assignment);
+    if (res.data.insertedId) {
+      Swal.fire({
+        title: "Success",
+        text: "Assignment Successfully Created",
+      });
+
+      setTitle("");
+      setImage(null);
+      setSubject("");
+      setLevel("");
+      setTopicName("");
+      setInstruction("");
+      setMark("");
+      setQuestions("");
+    }
   };
 
   return (
@@ -151,6 +183,16 @@ const CreateAssign = () => {
                       required
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="assign_form_group">
+                    <label>Image URL</label>
+                    <input
+                      type="text"
+                      placeholder="(Optional) But 'Recommenced'"
+                      value={image}
+                      onChange={(e) => setImage(e.target.value)}
                     />
                   </div>
 
