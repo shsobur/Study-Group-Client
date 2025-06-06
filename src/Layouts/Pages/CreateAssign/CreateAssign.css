@@ -1,0 +1,175 @@
+.main_create_assign_container {
+  max-width: 1920px;
+  height: auto;
+  margin: auto;
+  padding: 0 10px;
+}
+
+.create_assign_title h1 {
+  background: linear-gradient(360deg, #0a0a6e, #00c4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.create_assign_parent_container {
+  width: 100%;
+  margin-top: 50px;
+  gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.create_assign_left_container {
+  width: 35%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #d4d3d3;
+}
+
+.create_assign_right_container {
+  width: 65%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #0392d8;
+}
+
+/* Left side content style__ */
+
+.warning_container {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #000000;
+  font-size: 18px;
+  background-color: #12eb0a0b;
+  border: 2px solid #0ece07de;
+}
+
+/* GPT style__ */
+
+.assign_role_container {
+  margin-top: 20px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  background-color: #f6f4f4;
+  border-radius: 8px;
+}
+
+.assign_role_title {
+  text-align: center;
+  font-size: 2rem;
+  color: #0392d8;
+  margin-bottom: 1.5rem;
+}
+
+.assign_role_subtitle {
+  font-size: 1.7rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.assign_role_list {
+  list-style: disc;
+  font-size: 18px;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.assign_role_warning {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ffeeba;
+  background-color: #fff3cd;
+}
+
+.assign_role_warning_text {
+  color: #856404;
+  font-size: 1rem;
+}
+
+/* Right side content style__ */
+
+.assign_form_container {
+  padding: 10px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.assign_form_title {
+  text-align: center;
+  color: #0392d8;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.assign_form_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.assign_form_group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.assign_form_group input,
+.assign_form_group select,
+.assign_form_group textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.assign_form_question_input {
+  margin-bottom: 0.5rem;
+}
+
+.assign_form_add_btn {
+  align-self: flex-start;
+  background-color: #e0f7f5;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: #0392d8;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.assign_form_submit_btn {
+  padding: 0.75rem;
+  background-color: #0392d8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .assign_form_container {
+    padding: 1rem;
+  }
+  .assign_form_title {
+    font-size: 1.5rem;
+  }
+  .assign_form_submit_btn {
+    font-size: 0.95rem;
+  }
+}

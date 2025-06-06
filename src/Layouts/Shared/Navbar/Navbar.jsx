@@ -166,14 +166,17 @@ const Navbar = () => {
                   <hr></hr>
                   <hr></hr>
 
-                  <Link to="/create-assignments">
+                  <Link to="/create-assignments" onClick={() => setOpen(!open)}>
                     <span href="#" className="dropdown_item">
                       <HiOutlinePencilAlt />
                       Create Assignments
                     </span>
                   </Link>
 
-                  <Link to="/my-attempted-assignments">
+                  <Link
+                    to="/my-attempted-assignments"
+                    onClick={() => setOpen(!open)}
+                  >
                     <span className="dropdown_item">
                       <FiCheckSquare />
                       My Attempted Assignments

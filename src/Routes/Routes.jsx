@@ -7,6 +7,7 @@ import HomePageLayout from "../Layouts/Pages/Home/HomePageLayout/HomePageLayout"
 
 // Package__
 import { createBrowserRouter } from "react-router";
+import CreateAssign from "../Layouts/Pages/CreateAssign/CreateAssign";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePageLayout></HomePageLayout>,
+      },
+      {
+        path: "/create-assignments",
+        element: <CreateAssign></CreateAssign>,
       },
       {
         path: "/sign-in",
