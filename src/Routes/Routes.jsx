@@ -8,6 +8,7 @@ import HomePageLayout from "../Layouts/Pages/Home/HomePageLayout/HomePageLayout"
 // Package__
 import { createBrowserRouter } from "react-router";
 import CreateAssign from "../Layouts/Pages/CreateAssign/CreateAssign";
+import Assignment from "../Layouts/Pages/Assignment/Assignment";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePageLayout></HomePageLayout>,
+      },
+      {
+        path: "/assignments",
+        element: <Assignment></Assignment>,
       },
       {
         path: "/create-assignments",

@@ -1,0 +1,40 @@
+.main_assignment_container {
+  max-width: 1536px;
+  margin: auto;
+}
+
+.assignment_title_container {
+  background: linear-gradient(360deg, #0a0a6e, #00c4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: 80px;
+}
+
+/* Filter content style__ */
+
+.assignment_filter_parent_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.assignment_filter_parent_container h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.assignment_filter_container {
+  gap: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.assignment_filter_container select {
+  min-width: 300px;
+}

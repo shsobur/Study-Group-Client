@@ -1,9 +1,14 @@
+// File path__
 import "./CreateAssign.css";
-import { useContext, useState } from "react";
-import { FcOk } from "react-icons/fc";
-import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { AuthContext } from "../../../Provider/AuthProvider";
+
+// Package__
 import Swal from "sweetalert2";
+import { FcOk } from "react-icons/fc";
+
+// From react__
+import { useContext, useState } from "react";
 
 const CreateAssign = () => {
   const { user } = useContext(AuthContext);
@@ -32,7 +37,7 @@ const CreateAssign = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (image === null) {
+    if (image === null || "") {
       setImage(noImage);
     }
 
@@ -64,13 +69,13 @@ const CreateAssign = () => {
       });
 
       setTitle("");
-      setImage(null);
+      setImage("");
       setSubject("");
       setLevel("");
       setTopicName("");
       setInstruction("");
-      setMark("");
-      setQuestions("");
+      setMark(30);
+      setQuestions([""]);
     }
   };
 
@@ -134,7 +139,7 @@ const CreateAssign = () => {
                     </h2>
                     <ul className="assign_role_list">
                       <li>Use simple words and sentence structures.</li>
-                      <li>Number each question (1, 2, 3...)</li>
+                      <li>Don't need to number each question.</li>
                       <li>Match the school level of the student.</li>
                     </ul>
                   </section>
