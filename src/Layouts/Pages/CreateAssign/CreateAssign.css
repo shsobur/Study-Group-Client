@@ -132,7 +132,7 @@
 .assign_form_group select,
 .assign_form_group textarea {
   padding: 0.6rem;
-  border: 1px solid #ccc;
+  border: 1px solid #0392d8;
   border-radius: 6px;
   font-size: 1rem;
 }
@@ -194,27 +194,70 @@
   }
 }
 
-
 @media screen and (max-width: 1280px) {
-  
-}
+  .create_assign_left_container {
+    width: 40%;
+  }
 
+  .create_assign_right_container {
+    width: 60%;
+    border-radius: 8px;
+    border: 2px solid #0392d8;
+  }
+}
 
 @media screen and (max-width: 1024px) {
-  
-}
+  .create_assign_title h1 {
+    font-size: 2.2rem;
+  }
 
+  .assign_role_title {
+    font-size: 1.2rem;
+  }
+
+  .assign_role_subtitle {
+    font-size: 1.3rem;
+  }
+}
 
 @media screen and (max-width: 768px) {
-  
+  .create_assign_parent_container {
+    gap: 50px;
+    flex-direction: column-reverse;
+  }
+
+  .create_assign_left_container {
+    width: 100%;
+  }
+
+  .create_assign_right_container {
+    width: 100%;
+  }
+
+  .assign_role_title {
+    font-size: 1.5rem;
+  }
+
+  .assign_role_subtitle {
+    font-size: 1.5rem;
+  }
 }
-
-
-@media screen and (max-width: 640px) {
-  
-}
-
 
 @media screen and (max-width: 475px) {
-  
+  .create_assign_right_container {
+    padding: 0;
+  }
+
+  .create_assign_title h1 {
+    font-size: 2rem;
+  }
+
+  .assign_role_title {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .assign_role_subtitle {
+    font-size: 1.3rem;
+  }
 }
