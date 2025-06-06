@@ -1,6 +1,6 @@
-import { FcOk } from "react-icons/fc";
 import "./CreateAssign.css";
 import { useState } from "react";
+import { FcOk } from "react-icons/fc";
 
 const CreateAssign = () => {
   const [questions, setQuestions] = useState([""]);
@@ -24,6 +24,7 @@ const CreateAssign = () => {
           </div>
 
           <div className="create_assign_parent_container">
+            
             <div className="create_assign_left_container">
               <div className="warning_container">
                 <FcOk /> Read Carefully
