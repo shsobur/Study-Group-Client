@@ -3,6 +3,12 @@ import { useState } from "react";
 import { FcOk } from "react-icons/fc";
 
 const CreateAssign = () => {
+  const [title, setTitle] = useState("");
+  const [subject, setSubject] = useState("");
+  const [level, setLevel] = useState("");
+  const [topicName, setTopicName] = useState("");
+  const [instruction, setInstruction] = useState("");
+  const [mark, setMark] = useState(30);
   const [questions, setQuestions] = useState([""]);
 
   const handleQuestionChange = (index, value) => {
@@ -15,6 +21,27 @@ const CreateAssign = () => {
     setQuestions([...questions, ""]);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const assignment = {
+      title,
+      subject,
+      level,
+      topicName,
+      instruction,
+      questions: questions.map((q, i) => ({
+        number: i + 1,
+        question: q,
+      })),
+      mark: Number(mark),
+      createdTime: new Date().toISOString(),
+    };
+
+    console.log(assignment);
+    // You can send this object to your backend here
+  };
+
   return (
     <>
       <section id="create_assign_section">
@@ -24,7 +51,6 @@ const CreateAssign = () => {
           </div>
 
           <div className="create_assign_parent_container">
-            
             <div className="create_assign_left_container">
               <div className="warning_container">
                 <FcOk /> Read Carefully
@@ -116,19 +142,25 @@ const CreateAssign = () => {
             <div className="create_assign_right_container">
               <div className="assign_form_container">
                 <h2 className="assign_form_title">Start Creating</h2>
-                <form className="assign_form_wrapper">
+                <form onSubmit={handleSubmit} className="assign_form_wrapper">
                   <div className="assign_form_group">
                     <label>Title</label>
                     <input
                       type="text"
                       placeholder="Assignment title"
                       required
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
                     />
                   </div>
 
                   <div className="assign_form_group">
                     <label>Subject</label>
-                    <select required>
+                    <select
+                      required
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                    >
                       <option value="">Select subject</option>
                       <option value="Bangla">Bangla</option>
                       <option value="English">English</option>
@@ -140,7 +172,11 @@ const CreateAssign = () => {
 
                   <div className="assign_form_group">
                     <label>Level</label>
-                    <select required>
+                    <select
+                      required
+                      value={level}
+                      onChange={(e) => setLevel(e.target.value)}
+                    >
                       <option value="">Select level</option>
                       <option value="Easy">Easy</option>
                       <option value="Medium">Medium</option>
@@ -150,7 +186,13 @@ const CreateAssign = () => {
 
                   <div className="assign_form_group">
                     <label>Topic Name</label>
-                    <input type="text" placeholder="Topic name" required />
+                    <input
+                      type="text"
+                      placeholder="Topic name"
+                      required
+                      value={topicName}
+                      onChange={(e) => setTopicName(e.target.value)}
+                    />
                   </div>
 
                   <div className="assign_form_group">
@@ -159,6 +201,8 @@ const CreateAssign = () => {
                       placeholder="Write clear instructions..."
                       rows={4}
                       required
+                      value={instruction}
+                      onChange={(e) => setInstruction(e.target.value)}
                     ></textarea>
                   </div>
 
@@ -188,7 +232,14 @@ const CreateAssign = () => {
 
                   <div className="assign_form_group">
                     <label>Mark (30 - 60)</label>
-                    <input type="number" min={30} max={60} required />
+                    <input
+                      type="number"
+                      min={30}
+                      max={60}
+                      required
+                      value={mark}
+                      onChange={(e) => setMark(e.target.value)}
+                    />
                   </div>
 
                   <button type="submit" className="assign_form_submit_btn">
