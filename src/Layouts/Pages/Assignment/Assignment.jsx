@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
 import "./Assignment.css";
+import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import AssignCard from "../../Components/AssignCard/AssignCard";
 
 const Assignment = () => {
   const axiosPublic = useAxiosPublic();
@@ -8,13 +9,15 @@ const Assignment = () => {
   const [level, setLevel] = useState("");
   const [recent, setRecent] = useState("");
   const [loading, setLoading] = useState(false);
+  const [assignments, setAssignments] = useState([]);
+  console.log(loading);
 
   useEffect(() => {
     setLoading(true);
     axiosPublic
       .get(`/get-assignment?subject=${subject}&level=${level}&recent=${recent}`)
       .then((res) => {
-        console.log(res.data);
+        setAssignments(res.data);
       });
   }, [axiosPublic, subject, level, recent]);
 
@@ -72,6 +75,12 @@ const Assignment = () => {
                 <option>Old Assignments</option>
               </select>
             </div>
+          </div>
+
+          <div className="assignment_card_parent_container">
+            {
+              assignments.map(assignment => <AssignCard key={assignment._id} assignment={assignment}></AssignCard>)
+            }
           </div>
         </div>
       </section>
