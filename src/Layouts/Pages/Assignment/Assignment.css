@@ -1,6 +1,7 @@
 .main_assignment_container {
   max-width: 1536px;
   margin: auto;
+  padding: 0 10px;
 }
 
 .assignment_title_container {
@@ -46,6 +47,85 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 50px;
-  padding: 10px;
   padding-bottom: 50px;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1536px) {
+  .assignment_title_container {
+    font-size: 2.8rem;
+  }
+
+  .assignment_filter_parent_container h2 {
+    font-size: 1.6rem;
+  }
+
+  .assignment_filter_container {
+    gap: 40px;
+  }
+
+  .assignment_filter_container select {
+    min-width: 280px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .assignment_title_container {
+    font-size: 2.6rem;
+  }
+
+  .assignment_filter_container {
+    gap: 20px;
+  }
+
+  .assignment_filter_parent_container {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .assignment_card_parent_container {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .assignment_title_container {
+    font-size: 2.4rem;
+  }
+
+  .assignment_filter_container select {
+    min-width: 230px;
+  }
+
+  .assignment_card_parent_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .assignment_filter_container select {
+    min-width: 190px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .assignment_filter_container select {
+    min-width: 140px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .assignment_title_container {
+    font-size: 1.8rem;
+  }
+
+  .assignment_filter_container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .assignment_card_parent_container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

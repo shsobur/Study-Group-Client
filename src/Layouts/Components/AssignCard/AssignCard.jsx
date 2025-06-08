@@ -34,30 +34,30 @@ const AssignCard = ({ assignment }) => {
 
             <div className="flex-row">
               <div className="coin-base">
-                <IoBookOutline size={30} color="#047cc7" />
+                <IoBookOutline size={25} color="#047cc7" />
                 <h2>{subject}</h2>
               </div>
 
               <div className="time-left">
-                <TfiMarkerAlt size={30} color="#047cc7" />
+                <TfiMarkerAlt size={25} color="#047cc7" />
                 <h2>{mark}</h2>
               </div>
             </div>
 
             <div className="flex-row">
               <div className="coin-base">
-                <SiLevelsdotfyi size={25} color="#047cc7" />
+                <SiLevelsdotfyi size={20} color="#047cc7" />
                 <h2>{level}</h2>
               </div>
 
               <div className="time-left">
-                <BsCalendar3 size={25} color="#047cc7" />
+                <BsCalendar3 size={20} color="#047cc7" />
                 <h2>{createdTime}</h2>
               </div>
             </div>
           </main>
           <div className="card-attribute">
-            <PiUserCircleCheckDuotone size={35} color="#047cc7" />
+            <PiUserCircleCheckDuotone size={30} color="#047cc7" />
             <p>
               Created by <b>{createdBy.name}</b>
             </p>

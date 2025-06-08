@@ -54,7 +54,6 @@
 
 .coin-base,
 .time-left {
-  /* font-size: 1.2rem; */
   font-weight: 500;
   color: #646363;
 }
@@ -107,3 +106,49 @@ img.eye {
 }
 
 /* Responsive style__ */
+
+@media screen and (max-width: 1536px) {
+  .hero-image-container img {
+    object-fit: fill;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .main-content p {
+    font-size: 1.3rem;
+  }
+
+  .card-attribute {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+  .main-content p {
+    font-size: 1.2rem;
+  }
+
+  .coin-base,
+  .time-left,
+  .card-attribute {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .card-container {
+    padding: 10px;
+  }
+
+  .flex-row {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .card-attribute {
+    align-items: flex-start;
+  }
+}
