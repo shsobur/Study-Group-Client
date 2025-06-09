@@ -36,7 +36,7 @@ const Assignment = () => {
               <select
                 defaultValue=""
                 onChange={(e) => setSubject(e.target.value)}
-                className="select select-info text-lg font-semibold"
+                className="select select-primary text-lg font-semibold"
               >
                 <option value="" disabled>
                   Pick Your Subject
@@ -51,7 +51,7 @@ const Assignment = () => {
               <select
                 defaultValue=""
                 onChange={(e) => setLevel(e.target.value)}
-                className="select select-info text-lg font-semibold"
+                className="select select-primary text-lg font-semibold"
               >
                 <option value="" disabled>
                   Match With Your Level
@@ -65,7 +65,7 @@ const Assignment = () => {
               <select
                 defaultValue=""
                 onChange={(e) => setRecent(e.target.value)}
-                className="select select-info text-lg font-semibold"
+                className="select select-primary text-lg font-semibold"
               >
                 <option value="" disabled>
                   Filter by Recency

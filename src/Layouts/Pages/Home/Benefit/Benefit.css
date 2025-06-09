@@ -45,7 +45,7 @@ img {
   background-size: cover;
   grid-column: 2/-1;
   grid-row: 2/-1;
-  box-shadow: 0 0 2rem #0790e5ef;
+  box-shadow: 0 0 2rem #793ef0;
 }
 
 .card::after {

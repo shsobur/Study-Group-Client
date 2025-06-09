@@ -5,7 +5,7 @@ import Benefit from "../Benefit/Benefit";
 const HomePageLayout = () => {
   return (
     <>
-      <section>
+      <section >
         <Banner></Banner>
         <Benefit></Benefit>
       </section>

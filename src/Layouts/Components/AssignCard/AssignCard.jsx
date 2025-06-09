@@ -4,9 +4,11 @@ import { BsCalendar3 } from "react-icons/bs";
 import { PiUserCircleCheckDuotone } from "react-icons/pi";
 import { IoBookOutline } from "react-icons/io5";
 import { TfiMarkerAlt } from "react-icons/tfi";
+import { Link } from "react-router";
 
 const AssignCard = ({ assignment }) => {
   const {
+    _id,
     image,
     title,
     mark,
@@ -21,9 +23,11 @@ const AssignCard = ({ assignment }) => {
     <>
       <section>
         <div className="card-container">
-          <a className="hero-image-container">
-            <img className="hero-image" src={image} alt="Assignment image" />
-          </a>
+          <Link to={`/assignment-details/${_id}`}>
+            <a className="hero-image-container">
+              <img className="hero-image" src={image} alt="Assignment image" />
+            </a>
+          </Link>
           <main className="main-content">
             <h1>
               <i>Total Submit : {totalSubmit}</i>
@@ -34,24 +38,24 @@ const AssignCard = ({ assignment }) => {
 
             <div className="flex-row">
               <div className="coin-base">
-                <IoBookOutline size={25} color="#047cc7" />
+                <IoBookOutline size={25} color="#501ca3" />
                 <h2>{subject}</h2>
               </div>
 
               <div className="time-left">
-                <TfiMarkerAlt size={25} color="#047cc7" />
+                <TfiMarkerAlt size={25} color="#501ca3" />
                 <h2>{mark}</h2>
               </div>
             </div>
 
             <div className="flex-row">
               <div className="coin-base">
-                <SiLevelsdotfyi size={20} color="#047cc7" />
+                <SiLevelsdotfyi size={20} color="#501ca3" />
                 <h2>{level}</h2>
               </div>
 
               <div className="time-left">
-                <BsCalendar3 size={20} color="#047cc7" />
+                <BsCalendar3 size={20} color="#501ca3" />
                 <h2>{createdTime}</h2>
               </div>
             </div>
