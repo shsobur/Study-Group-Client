@@ -1,6 +1,22 @@
+import { useContext } from "react";
 import "./AssignDetails.css";
+import { useLoaderData } from "react-router";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const AssignDetails = () => {
+  const { user } = useContext(AuthContext);
+  const assignmentData = useLoaderData();
+  const {
+    topicName,
+    subject,
+    level,
+    mark,
+    totalSubmit,
+    instruction,
+    questions,
+    createdBy,
+  } = assignmentData;
+
   return (
     <>
       <section id="assign_details_section">
@@ -14,19 +30,23 @@ const AssignDetails = () => {
 
           <div className="assign_details_info_parent_container">
             <div className="assign_info_container">
-              <h2>Bangla Assignment on Kobita O Kobir Jibon</h2>
+              <h2>{topicName}</h2>
               <ul>
                 <li>
-                  <span>Subject: </span>Bangla
+                  <span>Subject: </span>
+                  {subject}
                 </li>
                 <li>
-                  <span>Level: </span>Easy
+                  <span>Level: </span>
+                  {level}
                 </li>
                 <li>
-                  <span>Total Submitted: </span>17 Assignments
+                  <span>Total Submitted: </span>
+                  {totalSubmit} Assignments
                 </li>
                 <li>
-                  <span>Total Mark: </span>45
+                  <span>Total Mark: </span>
+                  {mark}
                 </li>
               </ul>
             </div>
@@ -39,11 +59,7 @@ const AssignDetails = () => {
                       <u>Instruction:</u>
                     </b>{" "}
                   </span>
-                  Dear student, read the poem 'Chhuti' written by Rabindranath
-                  Tagore carefully. Then answer the following questions based on
-                  the poem and the life of the poet. Use simple words in your
-                  answer. Try to understand the emotion of the poem and explain
-                  it in your own words. Follow grammar rules while writing.
+                  {instruction}
                 </i>
               </article>
             </div>
@@ -52,15 +68,14 @@ const AssignDetails = () => {
           <div className="assign_question_parent_container">
             <h2>Assignment Questions</h2>
 
-            <div className="assign_question_container">
-              <span>Question No: 01</span>
-              <p>
-                <i>
-                  Do you think the boy in the poem is happy or sad? Why do you
-                  think so?
-                </i>
-              </p>
-            </div>
+            {questions.map((ques) => (
+              <div key={ques.number} className="assign_question_container">
+                <span>Question No: {ques.number}</span>
+                <p>
+                  <i>{ques.question}</i>
+                </p>
+              </div>
+            ))}
           </div>
 
           <div className="assign_submit_container">
@@ -73,28 +88,34 @@ const AssignDetails = () => {
               <p>
                 _This assignment was created by{" "}
                 <i>
-                  <b>Sobur Hossen</b>
+                  <b>{createdBy.name}</b>
                 </i>
                 .
               </p>
-              <p>
-                _If you have any questions about the assignment, you can email
-                me at{" "}
-                <i>
-                  <a href="#">soburhossen234@gmail.com.</a>
-                </i>
-              </p>
-              <span>
-                _Do you want to make any changes such as{" "}
-                <button className="assign_change_btn" id="assign_update_btn">
-                  Update
-                </button>{" "}
-                or{" "}
-                <button className="assign_change_btn" id="assign_delete_btn">
-                  Delete
-                </button>{" "}
-                the assignment?
-              </span>
+
+              {user?.email !== createdBy.email && (
+                <p>
+                  _If you have any questions about the assignment, you can email
+                  me at{" "}
+                  <i>
+                    <a href="#">{createdBy.email}</a>
+                  </i>
+                </p>
+              )}
+
+              {user?.email === createdBy.email && (
+                <span>
+                  _Do you want to make any changes such as{" "}
+                  <button className="assign_change_btn" id="assign_update_btn">
+                    Update
+                  </button>{" "}
+                  or{" "}
+                  <button className="assign_change_btn" id="assign_delete_btn">
+                    Delete
+                  </button>{" "}
+                  the assignment?
+                </span>
+              )}
             </div>
           </div>
 
