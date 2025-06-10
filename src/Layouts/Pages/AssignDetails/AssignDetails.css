@@ -37,8 +37,10 @@
   width: 40%;
   padding: 20px;
   cursor: pointer;
-  box-shadow: #00000066 0px 2px 4px, #0000004d 0px 7px 13px -3px, #00000033 0px -3px 0px inset;
   border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: #00000066 0px 2px 4px, #0000004d 0px 7px 13px -3px,
+    #00000033 0px -3px 0px inset;
 }
 
 .assign_instruction_container {
@@ -49,7 +51,11 @@
 
 .assign_info_container h2 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
+  text-decoration: underline;
+  font-style: italic;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .assign_info_container ul {
@@ -95,8 +101,10 @@
 .assign_question_container {
   margin: 20px 0;
   padding: 20px;
-  box-shadow: #00000066 0px 2px 4px, #0000004d 0px 7px 13px -3px, #00000033 0px -3px 0px inset;
+  background-color: #ffffff;
   border-radius: 8px;
+  box-shadow: #00000066 0px 2px 4px, #0000004d 0px 7px 13px -3px,
+    #00000033 0px -3px 0px inset;
 }
 
 .assign_question_container span {
@@ -151,6 +159,7 @@
   padding: 20px;
   font-size: 1.3rem;
   border-radius: 16px;
+  background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
@@ -178,4 +187,70 @@
 
 #assign_delete_btn {
   background-color: #a10808;
+}
+
+/* Assignment guideline style__ */
+
+.assign_guide_parent_container {
+  margin: 100px 0;
+}
+
+.assign_guide_parent_container h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.assign_guide_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.assign_guide_card {
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 10px #0000000f;
+}
+
+.assign_guide_title {
+  background: linear-gradient(90deg, #6f27e3, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.assign_guide_list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.assign_guide_list li {
+  margin-bottom: 0.75rem;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.assign_guide_bullet {
+  background: linear-gradient(90deg, #7429eb, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.assign_guide_note {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #d03801;
+  font-weight: 500;
 }
