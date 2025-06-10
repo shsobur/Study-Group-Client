@@ -1,6 +1,6 @@
 #assign_details_section {
   color: #151515;
-  background-color: #efefef;
+  background-color: #f8f6f6;
 }
 
 .main_assign_details_container {
@@ -13,7 +13,7 @@
 
 .assign_details_banner_container {
   max-width: 1536px;
-  height: 200px;
+  height: 150px;
 }
 
 .assign_details_banner_container img {
@@ -68,7 +68,7 @@
   margin-top: 20px;
   color: #151515;
   list-style: decimal;
-  border-bottom: 2px dashed #b0afaf;
+  border-bottom: 1px solid #54177f;
 }
 
 .assign_info_container ul li span {
@@ -253,4 +253,144 @@
   font-size: 0.95rem;
   color: #d03801;
   font-weight: 500;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .assign_info_container h2 {
+    font-size: 1.3rem;
+  }
+
+  .assign_info_container ul {
+    font-size: 1.1rem;
+  }
+
+  .assign_question_parent_container h2 {
+    font-size: 2.8rem;
+  }
+
+  .assign_creator_info_parent_container h2 {
+    font-size: 2.8rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .assign_info_container {
+    width: 50%;
+  }
+  .assign_instruction_container {
+    width: 50%;
+  }
+
+  .assign_info_container {
+    padding: 10px 10px 30px 10px;
+  }
+
+  .assign_question_parent_container h2 {
+    font-size: 2.6rem;
+  }
+
+  .assign_creator_info_parent_container h2 {
+    font-size: 2.6rem;
+  }
+
+  .assign_creator_info_container {
+    font-size: 1.2rem;
+  }
+
+  .assign_guide_parent_container h2 {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .assign_details_info_parent_container {
+    flex-direction: column;
+  }
+
+  .assign_info_container {
+    width: 100%;
+  }
+  .assign_instruction_container {
+    width: 100%;
+  }
+
+  .assign_instruction_container {
+    padding: 10px;
+  }
+
+  .assign_question_parent_container h2 {
+    font-size: 2.2rem;
+  }
+
+  .assign_creator_info_parent_container h2 {
+    font-size: 2.2rem;
+  }
+
+  .assign_question_container p {
+    font-size: 1.2rem;
+  }
+
+  .assign_change_btn {
+    padding: 4px 20px;
+    font-size: 16px;
+  }
+
+  .assign_guide_parent_container h2 {
+    font-size: 1.5rem;
+  }
+
+  .assign_guide_list li {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .assign_question_parent_container h2 {
+    font-size: 2rem;
+  }
+
+  .assign_creator_info_parent_container h2 {
+    font-size: 2rem;
+  }
+
+  .assign_creator_info_container p {
+    margin-bottom: 25px;
+  }
+
+  .assign_guide_parent_container h2 {
+    font-size: 1.4rem;
+  }
+
+  .assign_guide_card {
+    padding: 20px;
+  }
+
+  .assign_guide_list li {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .assign_question_parent_container h2 {
+    font-size: 1.6rem;
+  }
+
+  .assign_creator_info_parent_container h2 {
+    font-size: 1.6rem;
+  }
+
+  .assign_question_container p {
+    font-size: 18px;
+  }
+
+  .assign_creator_info_container p {
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+
+  .assign_creator_info_container span {
+    font-size: 18px;
+  }
 }

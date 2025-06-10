@@ -7,7 +7,7 @@ const AssignDetails = () => {
         <div className="main_assign_details_container">
           <div className="assign_details_banner_container">
             <img
-              src="https://i.postimg.cc/kXwvy8g0/assign-banner.png"
+              src="https://i.postimg.cc/bwvm9cjf/assign-banner.jpg"
               alt="Assignment banner"
             />
           </div>
@@ -161,7 +161,6 @@ const AssignDetails = () => {
               </div>
             </div>
           </div>
-
         </div>
       </section>
     </>
