@@ -1,3 +1,51 @@
+/* Loading style ST__ */
+
+.loading_parent_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.loading_container {
+  gap: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.loading_container p {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #7429eb;
+}
+
+/* Loading style END__ */
+
+/* Data message ST__ */
+
+.no_data_message_container {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.no_data_message_container h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  color: #5c5b5b;
+}
+
+.no_data_message_container p {
+  font-size: 1.5rem;
+  color: #151515;
+}
+
+
+/* Data message END__ */
+
 .main_assignment_container {
   max-width: 1536px;
   margin: auto;
