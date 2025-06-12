@@ -82,10 +82,6 @@ const Assignment = () => {
             </div>
           </div>
 
-          {/* <div>
-            <h1>No data</h1>
-          </div> */}
-
           {loading ? (
             <div className="loading_parent_container">
               <div className="loading_container">

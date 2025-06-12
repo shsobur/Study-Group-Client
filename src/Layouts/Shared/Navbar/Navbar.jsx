@@ -175,7 +175,7 @@ const Navbar = () => {
                   </Link>
 
                   <Link
-                    to="/my-attempted-assignments"
+                    to="/my-assignments"
                     onClick={() => setOpen(!open)}
                   >
                     <span className="dropdown_item">

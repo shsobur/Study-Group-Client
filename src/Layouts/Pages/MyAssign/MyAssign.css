@@ -1,0 +1,97 @@
+.main_my_assign_container {
+  max-width: 1536px;
+  margin: auto;
+  padding: 0 10px;
+}
+
+.my_assign_title_container {
+  background: linear-gradient(90deg, #7429eb, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+/* Assignment content style__ */
+
+.my_assign_card_parent_container {
+  margin: 50px 0;
+}
+
+.my_assign_card_container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* ____________________________ */
+/* ____________________________ */
+
+.my_assign_card_title_container h2 {
+    background: linear-gradient(90deg, #7429eb, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.my_assign_card_title_container p {
+  font-size: 20px;
+  color: #434242;
+  font-weight: 500;
+}
+
+.my_assign_card_title_container p b {
+  font-weight: 700;
+  color: #000000;
+}
+
+/* ____________________________ */
+/* ____________________________ */
+
+.my_assign_mark_container {
+  font-size: 18px;
+  color: #555454;
+}
+
+.my_assign_mark_container b {
+  font-size: 18px;
+  color: #151515;
+}
+
+/* ____________________________ */
+/* ____________________________ */
+
+.my_assign_status_container button:nth-child(1) {
+  padding: 5px 20px;
+  border-radius: 16px;
+  color: #f77647;
+  background-color: #f7764723;
+  border: 2px solid #f77647;
+}
+
+.my_assign_status_container button:nth-child(2) {
+  padding: 5px 20px;
+  border-radius: 16px;
+  color: #05ae05;
+  background-color: #018f0124;
+  border: 2px solid #05ae05;
+}
+
+/*  */
+
+.my_assign_file_container a {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  padding: 2px 20px;
+  border-radius: 8px;
+  border: 2px solid blue;
+  color: blue;
+}

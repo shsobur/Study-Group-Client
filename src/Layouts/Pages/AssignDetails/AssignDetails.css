@@ -1,3 +1,69 @@
+/* Assignment modal style ST__ */
+
+.modal-box {
+  max-width: 1024px;
+}
+
+.assign_submit_title {
+  background: linear-gradient(90deg, #7429eb, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.assignment_form {
+  max-width: 720px;
+  margin: 50px auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.text_input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.text_input:focus {
+  border-color: #5a20b6;
+}
+
+.warning_text {
+  font-size: 14px;
+  color: #cc3300;
+  margin-top: -16px;
+  margin-bottom: 16px;
+}
+
+.submit_btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #5a20b6;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit_btn:hover {
+  background-color: #491799;
+}
+
+/* Assignment modal style END__ */
+
 #assign_details_section {
   color: #151515;
   background-color: #f8f6f6;

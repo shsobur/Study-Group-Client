@@ -10,6 +10,8 @@ import { createBrowserRouter } from "react-router";
 import CreateAssign from "../Layouts/Pages/CreateAssign/CreateAssign";
 import Assignment from "../Layouts/Pages/Assignment/Assignment";
 import AssignDetails from "../Layouts/Pages/AssignDetails/AssignDetails";
+import PendingAssign from "../Layouts/Pages/PeddingAssign/PendingAssign";
+import MyAssign from "../Layouts/Pages/MyAssign/MyAssign";
 
 const router = createBrowserRouter([
   {
@@ -29,11 +31,21 @@ const router = createBrowserRouter([
         path: "/assignment-details/:id",
         element: <AssignDetails></AssignDetails>,
         loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_SERVER_API}/assignment-details/${params.id}`),
+          fetch(
+            `${import.meta.env.VITE_SERVER_API}/assignment-details/${params.id}`
+          ),
+      },
+      {
+        path: "/pending-assignments",
+        element: <PendingAssign></PendingAssign>,
       },
       {
         path: "/create-assignments",
         element: <CreateAssign></CreateAssign>,
+      },
+      {
+        path: "/my-assignments",
+        element: <MyAssign></MyAssign>
       },
       {
         path: "/sign-in",

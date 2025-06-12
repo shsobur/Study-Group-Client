@@ -1,12 +1,27 @@
-import { useContext } from "react";
+// File path__
 import "./AssignDetails.css";
-import { useLoaderData } from "react-router";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
+// Package__
+import { useLoaderData } from "react-router";
+
+// From react__
+import { useContext, useState } from "react";
+import { RxCrossCircled } from "react-icons/rx";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+
 const AssignDetails = () => {
+  const [topic, setTopic] = useState("");
+  const [pdfFile, setPdfFile] = useState(null);
+  const [updateCount, setUpdateCount] = useState(false);
+  const [updateData, setUpdateData] = useState(null);
+
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const assignmentData = useLoaderData();
   const {
+    _id,
     topicName,
     subject,
     level,
@@ -16,6 +31,53 @@ const AssignDetails = () => {
     questions,
     createdBy,
   } = assignmentData;
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === "application/pdf") {
+      setPdfFile(file);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("topicName", topic);
+    formData.append("subject", subject);
+    formData.append("mark", mark);
+    formData.append("assignmentFile", pdfFile);
+    formData.append("userEmail", user.email);
+    formData.append("creatorEmail", createdBy.email);
+
+    const res = await axiosSecure.post("/submitted-assignment-data", formData);
+    console.log(res.data);
+    if (res.data.insertedId) {
+      document.getElementById("modal_close_btn").click();
+
+      Swal.fire({
+        title: "Assignment submitted. Wait for your marks",
+        icon: "success",
+        draggable: true,
+      });
+
+      setTopic("");
+      setPdfFile(null);
+
+      handleSubmitCount();
+    }
+  };
+
+  const handleSubmitCount = async () => {
+    const newSubmitCount = totalSubmit + 1;
+    setUpdateData(newSubmitCount);
+    const res = await axiosSecure.patch(`/assignment-data-update/${_id}`, {
+      totalSubmit: newSubmitCount,
+    });
+    if (res.data.modifiedCount) {
+      setUpdateCount(true);
+    }
+  };
 
   return (
     <>
@@ -34,19 +96,19 @@ const AssignDetails = () => {
               <ul>
                 <li>
                   <span>Subject: </span>
-                  {subject}
+                  <i>{subject}</i>
                 </li>
                 <li>
                   <span>Level: </span>
-                  {level}
+                  <i>{level}</i>
                 </li>
                 <li>
                   <span>Total Submitted: </span>
-                  {totalSubmit} Assignments
+                  <b>{updateCount ? updateData : totalSubmit} </b>
+                  <i>Assignments</i>
                 </li>
                 <li>
-                  <span>Total Mark: </span>
-                  {mark}
+                  <span>Total Mark: </span> <i>{mark}</i>
                 </li>
               </ul>
             </div>
@@ -79,8 +141,66 @@ const AssignDetails = () => {
           </div>
 
           <div className="assign_submit_container">
-            <button>Submit assignment</button>
+            {user?.email !== createdBy.email && (
+              <button
+                onClick={() =>
+                  document.getElementById("assign_form_modal").showModal()
+                }
+              >
+                Submit assignment
+              </button>
+            )}
           </div>
+
+          {/* Assignment submit form modal__ST */}
+
+          <dialog
+            id="assign_form_modal"
+            className="modal modal-bottom sm:modal-middle"
+          >
+            <div className="modal-box">
+              <div className="flex items-start justify-between">
+                <h3 className="assign_submit_title">Submit You Assignment</h3>
+                <form method="dialog">
+                  <button id="modal_close_btn">
+                    <RxCrossCircled size={30} />
+                  </button>
+                </form>
+              </div>
+
+              <div>
+                <form className="assignment_form" onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    className="text_input"
+                    placeholder="Enter topic name"
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                    required
+                  />
+
+                  <p className="warning_text">
+                    ⚠️ Make sure your topic name exactly matches the assignment
+                    name. Otherwise, your submission may be rejected.
+                  </p>
+
+                  <input
+                    type="file"
+                    accept="application/pdf"
+                    onChange={handleFileChange}
+                    className="text_input"
+                    required
+                  />
+
+                  <button type="submit" className="submit_btn">
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </div>
+          </dialog>
+
+          {/* Assignment submit form modal__END */}
 
           <div className="assign_creator_info_parent_container">
             <h2>Cerated By</h2>
