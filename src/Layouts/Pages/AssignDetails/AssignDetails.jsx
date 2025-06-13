@@ -3,19 +3,20 @@ import "./AssignDetails.css";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 // Package__
+import Swal from "sweetalert2";
 import { useLoaderData } from "react-router";
 
 // From react__
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RxCrossCircled } from "react-icons/rx";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import Swal from "sweetalert2";
 
 const AssignDetails = () => {
   const [topic, setTopic] = useState("");
   const [pdfFile, setPdfFile] = useState(null);
   const [updateCount, setUpdateCount] = useState(false);
   const [updateData, setUpdateData] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
@@ -31,6 +32,16 @@ const AssignDetails = () => {
     questions,
     createdBy,
   } = assignmentData;
+
+  useEffect(() => {
+    axiosSecure
+      .get("/check-submitted-assignment", {
+        params: { topicName, userEmail: user?.email },
+      })
+      .then((res) => {
+        setIsSubmitted(res.data.exists);
+      });
+  }, [axiosSecure, topicName, user]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -64,6 +75,7 @@ const AssignDetails = () => {
       setTopic("");
       setPdfFile(null);
 
+      isSubmitted(true);
       handleSubmitCount();
     }
   };
@@ -142,13 +154,19 @@ const AssignDetails = () => {
 
           <div className="assign_submit_container">
             {user?.email !== createdBy.email && (
-              <button
-                onClick={() =>
-                  document.getElementById("assign_form_modal").showModal()
-                }
-              >
-                Submit assignment
-              </button>
+              <>
+                {isSubmitted ? (
+                  <button>Pending Assignment...</button>
+                ) : (
+                  <button
+                    onClick={() =>
+                      document.getElementById("assign_form_modal").showModal()
+                    }
+                  >
+                    Submit assignment
+                  </button>
+                )}
+              </>
             )}
           </div>
 
@@ -174,7 +192,7 @@ const AssignDetails = () => {
                     type="text"
                     className="text_input"
                     placeholder="Enter topic name"
-                    value={topic}
+                    value={topicName}
                     onChange={(e) => setTopic(e.target.value)}
                     required
                   />

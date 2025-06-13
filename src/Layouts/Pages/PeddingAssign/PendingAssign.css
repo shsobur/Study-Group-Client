@@ -3,3 +3,160 @@
   margin: auto;
   padding: 0 10px;
 }
+
+.pending_assign_title {
+  background: linear-gradient(90deg, #7429eb, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+/* Pending assign card style__ */
+
+.pending_assign_card_container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  border: 2px solid #7429eb;
+  /* ------- */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* _____________________________ */
+/* _____________________________ */
+
+.pending_assign_number {
+  width: 2.5%;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* _____________________________ */
+/* _____________________________ */
+
+.pending_assign_card_title {
+  flex-grow: 1;
+}
+
+.pending_assign_card_title h2 {
+  background: linear-gradient(90deg, #7429eb, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.pending_assign_card_title p {
+  font-size: 18px;
+}
+
+/* _____________________________ */
+/* _____________________________ */
+
+.pending_assign_card_mark {
+  flex-grow: 1;
+}
+
+.pending_assign_card_mark h2 {
+  font-size: 18px;
+  color: #5a5959;
+  font-weight: 600;
+}
+
+.pending_assign_card_mark h2 b {
+  color: #151515;
+  font-weight: 800;
+}
+
+/* _____________________________ */
+/* _____________________________ */
+
+.pending_assign_card_status {
+  flex-grow: 1;
+}
+
+.pending_assign_card_status button {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.pending_assign_card_status button:nth-child(1) {
+  color: #ec4d12;
+  padding: 2px 15px;
+  border-radius: 32px;
+  margin-bottom: 10px;
+  background-color: #ec4c1211;
+  border: 2px solid #ec4d12;
+}
+
+.none_active_assign_style {
+  color: #019101;
+  padding: 4px 20px;
+  border-radius: 8px;
+  background-color: #0191010c;
+  border: 2px solid #019101;
+  transition: 0.2s ease-in-out;
+}
+
+.active_assign_style {
+  color: #ffffff;
+  padding: 4px 20px;
+  border-radius: 8px;
+  border: 2px solid #019101;
+  background-color: #019101;
+}
+
+/* _____________________________ */
+/* _____________________________ */
+
+.pending_assign_card_file {
+  flex-grow: 1;
+}
+
+/* Active__ */
+
+.pending_assign_active_pdf {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 3px 20px;
+  border-radius: 8px;
+  background-color: #0606d1;
+  border: 2px solid #0606d1;
+  /* ------ */
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* None Active__ */
+
+.pending_assign_none_active_pdf {
+  color: #8d8c8c;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 3px 20px;
+  cursor: not-allowed;
+  border-radius: 8px;
+  background-color: #070799;
+  border: 2px solid #0606d1;
+  /* ------ */
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pending_assign_none_active_pdf a {
+  cursor: not-allowed;
+}
