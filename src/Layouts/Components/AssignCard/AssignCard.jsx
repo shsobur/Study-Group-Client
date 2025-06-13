@@ -24,7 +24,7 @@ const AssignCard = ({ assignment }) => {
       <section>
         <div className="card-container">
           <Link to={`/assignment-details/${_id}`}>
-            <a className="hero-image-container">
+            <a href="#" className="hero-image-container">
               <img className="hero-image" src={image} alt="Assignment image" />
             </a>
           </Link>
