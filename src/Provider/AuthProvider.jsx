@@ -1,7 +1,7 @@
 // File path__
 import auth from "../Firebase/firebase.config";
 
-// Imported package__
+// Package__
 import {
   signOut,
   updateProfile,
@@ -23,7 +23,6 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [userLoading, setUserLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
-  console.log(user);
 
   // Sign in with google__
   const handleGoogleSignIn = async () => {

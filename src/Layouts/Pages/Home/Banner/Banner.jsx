@@ -1,6 +1,9 @@
-import { Link } from "react-router";
-import SvgElement from "../../../Components/SvgElement/SvgElement";
+// File path__
 import "./Banner.css";
+import SvgElement from "../../../Components/SvgElement/SvgElement";
+
+// Package__
+import { Link } from "react-router";
 
 const Banner = () => {
   return (

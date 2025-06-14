@@ -1,12 +1,11 @@
+// File path__
 import "./Footer.css";
 
-// React icons__
+// Package__
+import { Link } from "react-router";
 import { AiOutlineMobile } from "react-icons/ai";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { CiFacebook, CiInstagram, CiLinkedin, CiTwitter } from "react-icons/ci";
-
-// Imported package__
-import { Link } from "react-router";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -104,7 +103,9 @@ const Footer = () => {
             </div>
 
             <div className="footer_bottom_container">
-              <div>© Copyright Study Group {currentYear} All Right Reserved.</div>
+              <div>
+                © Copyright Study Group {currentYear} All Right Reserved.
+              </div>
               <div>
                 Terms Of Use <span className="pl-5 pr-5">|</span> Privacy Policy
               </div>

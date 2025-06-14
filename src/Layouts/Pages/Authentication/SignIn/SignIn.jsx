@@ -7,10 +7,10 @@ import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { TiHomeOutline } from "react-icons/ti";
+import { Link, useNavigate } from "react-router";
 
 // From React__
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
 
 const SignIn = () => {
   const { handleLoginUser, loading } = useContext(AuthContext);

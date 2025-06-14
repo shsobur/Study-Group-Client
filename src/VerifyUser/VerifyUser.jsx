@@ -1,6 +1,11 @@
-import { useContext } from "react";
+// File path__
+import { AuthContext } from "../Provider/AuthProvider";
+
+// Package__
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "@/Layout/Components/AuthProvider/AuthProvider";
+
+// From react__
+import { useContext } from "react";
 
 const VerifyUser = ({ children }) => {
   const { user, loading } = useContext(AuthContext);

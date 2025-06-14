@@ -5,11 +5,12 @@ import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
 
 // Imported package__
 import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 import { TiHomeOutline } from "react-icons/ti";
 import { Link, useNavigate } from "react-router";
+
 // From react__
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
 
 const SignUp = () => {
   const navigate = useNavigate();

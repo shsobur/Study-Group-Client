@@ -1,8 +1,13 @@
-import { useContext, useEffect, useState } from "react";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+// File path__
 import "./MyAssign.css";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
+
+// Package__
 import { PiDownloadSimpleFill } from "react-icons/pi";
+
+// From react__
+import { useContext, useEffect, useState } from "react";
 
 const MyAssign = () => {
   const { user } = useContext(AuthContext);
@@ -95,7 +100,6 @@ const MyAssign = () => {
                   <div className="assignment_mark_container">45/60</div>
                   <p>Keep up the good work, you did amazing performance!</p>
                 </div> */}
-
               </div>
             </div>
           </div>

@@ -6,13 +6,13 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 // Imported package__
 import Swal from "sweetalert2";
 import { Link, NavLink } from "react-router";
-
 // React icons__
 import { PiSignIn } from "react-icons/pi";
 import { IoIosMenu } from "react-icons/io";
 import { FiCheckSquare } from "react-icons/fi";
 import { IoHomeOutline } from "react-icons/io5";
 import { HiMiniUserCircle } from "react-icons/hi2";
+import { HiOutlinePencilAlt } from "react-icons/hi";
 import { RxCross1, RxLapTimer } from "react-icons/rx";
 import { MdKeyboardArrowDown, MdOutlineAssignment } from "react-icons/md";
 
@@ -20,7 +20,6 @@ import { MdKeyboardArrowDown, MdOutlineAssignment } from "react-icons/md";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useContext, useState } from "react";
-import { HiOutlinePencilAlt } from "react-icons/hi";
 
 const Navbar = () => {
   const menuRef = useRef();
@@ -174,10 +173,7 @@ const Navbar = () => {
                     </span>
                   </Link>
 
-                  <Link
-                    to="/my-assignments"
-                    onClick={() => setOpen(!open)}
-                  >
+                  <Link to="/my-assignments" onClick={() => setOpen(!open)}>
                     <span className="dropdown_item">
                       <FiCheckSquare />
                       My Attempted Assignments

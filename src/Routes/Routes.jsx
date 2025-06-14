@@ -1,17 +1,17 @@
 // File path__
 import Main from "../Layouts/Main/Main";
+import MyAssign from "../Layouts/Pages/MyAssign/MyAssign";
 import ErrorPage from "../Layouts/Components/Error/ErrorPage";
+import Assignment from "../Layouts/Pages/Assignment/Assignment";
 import SignIn from "../Layouts/Pages/Authentication/SignIn/SignIn";
 import SignUp from "../Layouts/Pages/Authentication/SignUp/SignUp";
+import CreateAssign from "../Layouts/Pages/CreateAssign/CreateAssign";
+import AssignDetails from "../Layouts/Pages/AssignDetails/AssignDetails";
+import PendingAssign from "../Layouts/Pages/PendingAssign/PendingAssign";
 import HomePageLayout from "../Layouts/Pages/Home/HomePageLayout/HomePageLayout";
 
 // Package__
 import { createBrowserRouter } from "react-router";
-import CreateAssign from "../Layouts/Pages/CreateAssign/CreateAssign";
-import Assignment from "../Layouts/Pages/Assignment/Assignment";
-import AssignDetails from "../Layouts/Pages/AssignDetails/AssignDetails";
-import PendingAssign from "../Layouts/Pages/PeddingAssign/PendingAssign";
-import MyAssign from "../Layouts/Pages/MyAssign/MyAssign";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-assignments",
-        element: <MyAssign></MyAssign>
+        element: <MyAssign></MyAssign>,
       },
       {
         path: "/sign-in",
