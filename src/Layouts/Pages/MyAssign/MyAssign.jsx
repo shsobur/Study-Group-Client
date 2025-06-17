@@ -92,7 +92,15 @@ const MyAssign = () => {
                     </div>
 
                     <div className="my_assign_status_container">
-                      <button>Status: {assignment.status}</button>
+                      <button
+                        className={
+                          assignment.status === "Completed"
+                            ? "assign_completed_btn_style"
+                            : "assign_pending_btn_style"
+                        }
+                      >
+                        Status: {assignment.status}
+                      </button>
                     </div>
 
                     <div className="my_assign_file_container">
@@ -109,22 +117,26 @@ const MyAssign = () => {
                     <hr />
                     <br />
                     <div className="assignment_message_parent_container">
-                      <div className="assignment_pending_message">
-                        <h1>
-                          <i> Your assignment is being reviewed.</i>
-                        </h1>
-                        <p>
-                          You can start another assignment during this time or
-                          wait until the current one is reviewed.
-                        </p>
-                      </div>
-
-                      {/* <div className="assignment_complete_message">
-                    <h1>Congratulations!</h1>
-                    <p>You got</p>
-                    <div className="assignment_mark_container">45/60</div>
-                    <p>Keep up the good work, you did amazing performance!</p>
-                  </div> */}
+                      {assignment.mark ? (
+                        <div className="assignment_complete_message">
+                          <h1>Congratulations!</h1>
+                          <p>You got</p>
+                          <div className="assignment_mark_container">45/60</div>
+                          <p>
+                            Keep up the good work, you did amazing performance!
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="assignment_pending_message">
+                          <h1>
+                            <i> Your assignment is being reviewed.</i>
+                          </h1>
+                          <p>
+                            You can start another assignment during this time or
+                            wait until the current one is reviewed.
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

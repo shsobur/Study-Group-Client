@@ -47,6 +47,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  background-color: #fcfcfc;
 }
 
 /* ____________________________ */
@@ -62,7 +63,7 @@
 /* ____________________________ */
 
 .my_assign_card_title_container {
-  flex-grow: 1;
+  width: 45%;
 }
 
 .my_assign_card_title_container h2 {
@@ -107,19 +108,19 @@
   flex-grow: 1;
 }
 
-.my_assign_status_container button:nth-child(1) {
+.assign_pending_btn_style {
   padding: 5px 20px;
-  border-radius: 16px;
+  border-radius: 8px;
   color: #f77647;
-  background-color: #f7764723;
+  background-color: #f776470c;
   border: 2px solid #f77647;
 }
 
-.my_assign_status_container button:nth-child(2) {
+.assign_completed_btn_style {
   padding: 5px 20px;
-  border-radius: 16px;
+  border-radius: 8px;
   color: #05ae05;
-  background-color: #018f0124;
+  background-color: #018f010c;
   border: 2px solid #05ae05;
 }
 
