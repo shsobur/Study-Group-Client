@@ -9,38 +9,18 @@ import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { SlArrowLeftCircle } from "react-icons/sl";
+import Swal from "sweetalert2";
 
 const PendingAssign = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
 
   const [isActive, setIsActive] = useState(null);
+  const [assignMarkLoading, setAssignMarkLoading] = useState(false);
   const [pendingAssignLoading, setPendingAssignLoading] = useState(false);
   const [pendingAssignments, setPendingAssignments] = useState([]);
   const [singleAssignment, setSingleAssignment] = useState(null);
   const [errors, setErrors] = useState({});
-
-  // Handle assignment mark variable__
-  const totalQuestions = singleAssignment?.questionNumber;
-  const totalMark = Number(singleAssignment?.assignmentMark);
-  console.log(totalQuestions, totalMark);
-
-  const questionSectionMax = totalQuestions * 5;
-  const remainingMark = totalMark - questionSectionMax;
-  const ruleMark = parseFloat((remainingMark / 4).toFixed(2));
-
-  useEffect(() => {
-    setPendingAssignLoading(true);
-    axiosSecure
-      .get(`/pending-assignment?userEmail=${user?.email}`)
-      .then((res) => {
-        setPendingAssignments(res.data);
-        setPendingAssignLoading(false);
-      });
-  }, [axiosSecure, user]);
-
-  // Handle assignment mark data__
-
   const [marks, setMarks] = useState({
     correct: 0,
     extra: 0,
@@ -48,6 +28,31 @@ const PendingAssign = () => {
     readable: 0,
     presentation: 0,
   });
+
+  // Handle assignment mark variable__
+  const totalQuestions = singleAssignment?.questionNumber;
+  const totalMark = Number(singleAssignment?.assignmentMark);
+  const questionSectionMax = totalQuestions * 5;
+  const remainingMark = totalMark - questionSectionMax;
+  const ruleMark = parseFloat((remainingMark / 4).toFixed(2));
+
+  useEffect(() => {
+    handlePendingAssignments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [axiosSecure, user]);
+
+  const handlePendingAssignments = async () => {
+    setPendingAssignLoading(true);
+
+    await axiosSecure
+      .get(`/pending-assignment?userEmail=${user?.email}`)
+      .then((res) => {
+        setPendingAssignments(res.data);
+        setPendingAssignLoading(false);
+      });
+  };
+
+  // Handle assignment mark data__
 
   const handleChange = (field, value, max) => {
     const num = parseFloat(value);
@@ -68,6 +73,28 @@ const PendingAssign = () => {
     marks.layout +
     marks.readable +
     marks.presentation;
+
+  const handleAssignmentMark = async (id) => {
+    const assignmentMark = [
+      `Based on correct answers ${marks.correct}`,
+      `Based on short and useful extra information ${marks.extra}`,
+      `Based on good PDF layout and organized content ${marks.layout}`,
+      `Based on easy-to-read text ${marks.readable}`,
+      `Based on neat and well-presented answer sheet ${marks.presentation}`,
+    ];
+
+    setAssignMarkLoading(true);
+    const res = await axiosSecure.patch(
+      `/assignment-mark/${id}`,
+      assignmentMark
+    );
+    if (res.data.modifiedCount === 1) {
+      setAssignMarkLoading(false);
+      handlePendingAssignments();
+      document.getElementById("modal_close_btn").click();
+      Swal.fire("Assignment mark submitted successfully!");
+    }
+  };
 
   return (
     <>
@@ -114,20 +141,30 @@ const PendingAssign = () => {
                     </div>
 
                     <div className="pending_assign_card_status">
-                      <button>Status: {assignment.status}</button>
-                      <br />
                       <button
-                        onClick={() =>
-                          setIsActive(isActive === index ? null : index)
-                        }
                         className={
-                          isActive === index
-                            ? "active_assign_style"
-                            : "none_active_assign_style"
+                          assignment.status === "Completed"
+                            ? "assign_completed_status_btn"
+                            : "assign_pending_status_btn"
                         }
                       >
-                        Check Assignment PDF
+                        Status: {assignment.status}
                       </button>
+                      <br />
+                      {assignment.status !== "Completed" && (
+                        <button
+                          onClick={() =>
+                            setIsActive(isActive === index ? null : index)
+                          }
+                          className={
+                            isActive === index
+                              ? "active_assign_style"
+                              : "none_active_assign_style"
+                          }
+                        >
+                          Check Assignment PDF
+                        </button>
+                      )}
                     </div>
 
                     <div className="pending_assign_card_file">
@@ -148,6 +185,7 @@ const PendingAssign = () => {
                         <button
                           onClick={() => {
                             setSingleAssignment(assignment);
+                            handleAssignmentMark(assignment._id);
                             document
                               .getElementById("assignment_mark")
                               .showModal();
@@ -165,7 +203,6 @@ const PendingAssign = () => {
 
                     {/* Mark modal form__ST */}
 
-                    {/* Open the modal using document.getElementById('ID').showModal() method */}
                     <dialog
                       id="assignment_mark"
                       className="modal modal-bottom sm:modal-middle"
@@ -176,7 +213,18 @@ const PendingAssign = () => {
                             Give Assignment Marks
                           </h1>
                           <form method="dialog">
-                            <button>
+                            <button
+                              id="modal_close_btn"
+                              onClick={() =>
+                                setMarks({
+                                  correct: 0,
+                                  extra: 0,
+                                  layout: 0,
+                                  readable: 0,
+                                  presentation: 0,
+                                })
+                              }
+                            >
                               <SlArrowLeftCircle size={30} />
                             </button>
                           </form>
@@ -261,7 +309,9 @@ const PendingAssign = () => {
                               </span>
                             </div>
 
-                            <button className="form_submit">Submit</button>
+                            <button className="form_submit">
+                              {assignMarkLoading ? "Working..." : "Submit"}
+                            </button>
                           </div>
                         </div>
                       </div>

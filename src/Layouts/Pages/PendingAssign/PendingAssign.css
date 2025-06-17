@@ -81,13 +81,22 @@
   font-size: 18px;
 }
 
-.pending_assign_card_status button:nth-child(1) {
+.assign_pending_status_btn {
   color: #ec4d12;
   padding: 2px 15px;
   border-radius: 8px;
   margin-bottom: 10px;
   background-color: #ec4c1211;
   border: 2px solid #ec4d12;
+}
+
+.assign_completed_status_btn {
+  color: #019101;
+  padding: 2px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #0191010c;
+  border: 2px solid #019101;
 }
 
 .none_active_assign_style {
