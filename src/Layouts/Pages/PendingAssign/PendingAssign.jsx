@@ -20,6 +20,7 @@ const PendingAssign = () => {
   const [pendingAssignLoading, setPendingAssignLoading] = useState(false);
   const [pendingAssignments, setPendingAssignments] = useState([]);
   const [singleAssignment, setSingleAssignment] = useState(null);
+  const [assignmentId, setAssignmentId] = useState(null);
   const [errors, setErrors] = useState({});
   const [marks, setMarks] = useState({
     correct: 0,
@@ -74,7 +75,7 @@ const PendingAssign = () => {
     marks.readable +
     marks.presentation;
 
-  const handleAssignmentMark = async (id) => {
+  const handleAssignmentMark = async () => {
     const assignmentMark = [
       `Based on correct answers ${marks.correct}`,
       `Based on short and useful extra information ${marks.extra}`,
@@ -85,11 +86,12 @@ const PendingAssign = () => {
 
     setAssignMarkLoading(true);
     const res = await axiosSecure.patch(
-      `/assignment-mark/${id}`,
+      `/assignment-mark/${assignmentId}`,
       assignmentMark
     );
     if (res.data.modifiedCount === 1) {
       setAssignMarkLoading(false);
+      setAssignmentId(null);
       handlePendingAssignments();
       document.getElementById("modal_close_btn").click();
       Swal.fire("Assignment mark submitted successfully!");
@@ -180,24 +182,27 @@ const PendingAssign = () => {
                           <MdOutlineFileDownload /> <a href="#">PDF</a>
                         </button>
                       )}
-
-                      {isActive === index ? (
-                        <button
-                          onClick={() => {
-                            setSingleAssignment(assignment);
-                            handleAssignmentMark(assignment._id);
-                            document
-                              .getElementById("assignment_mark")
-                              .showModal();
-                          }}
-                          className="assign_mark_btn"
-                        >
-                          Give Marks
-                        </button>
-                      ) : (
-                        <button className="transparent_assign_mark_btn">
-                          Give Marks
-                        </button>
+                      {assignment.status !== "Completed" && (
+                        <>
+                          {isActive === index ? (
+                            <button
+                              onClick={() => {
+                                setSingleAssignment(assignment);
+                                setAssignmentId(assignment._id);
+                                document
+                                  .getElementById("assignment_mark")
+                                  .showModal();
+                              }}
+                              className="assign_mark_btn"
+                            >
+                              Give Marks
+                            </button>
+                          ) : (
+                            <button className="transparent_assign_mark_btn">
+                              Give Marks
+                            </button>
+                          )}
+                        </>
                       )}
                     </div>
 
@@ -309,9 +314,16 @@ const PendingAssign = () => {
                               </span>
                             </div>
 
-                            <button className="form_submit">
-                              {assignMarkLoading ? "Working..." : "Submit"}
-                            </button>
+                            {assignMarkLoading ? (
+                              <button className="form_submit">Working</button>
+                            ) : (
+                              <button
+                                onClick={handleAssignmentMark}
+                                className="form_submit"
+                              >
+                                Submit
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>
