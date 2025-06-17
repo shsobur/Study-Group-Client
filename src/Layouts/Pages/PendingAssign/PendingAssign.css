@@ -33,16 +33,16 @@
 /* _____________________________ */
 
 .pending_assign_number {
-  width: 2.5%;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
+  width: 2%;
 }
 
 /* _____________________________ */
 /* _____________________________ */
 
 .pending_assign_card_title {
-  flex-grow: 1;
+  width: 45%;
 }
 
 .pending_assign_card_title h2 {
@@ -62,10 +62,6 @@
 /* _____________________________ */
 /* _____________________________ */
 
-.pending_assign_card_mark {
-  flex-grow: 1;
-}
-
 .pending_assign_card_mark h2 {
   font-size: 18px;
   color: #5a5959;
@@ -80,10 +76,6 @@
 /* _____________________________ */
 /* _____________________________ */
 
-.pending_assign_card_status {
-  flex-grow: 1;
-}
-
 .pending_assign_card_status button {
   font-weight: 500;
   font-size: 18px;
@@ -92,7 +84,7 @@
 .pending_assign_card_status button:nth-child(1) {
   color: #ec4d12;
   padding: 2px 15px;
-  border-radius: 32px;
+  border-radius: 8px;
   margin-bottom: 10px;
   background-color: #ec4c1211;
   border: 2px solid #ec4d12;
@@ -117,10 +109,6 @@
 
 /* _____________________________ */
 /* _____________________________ */
-
-.pending_assign_card_file {
-  flex-grow: 1;
-}
 
 /* Active__ */
 
@@ -160,3 +148,110 @@
 .pending_assign_none_active_pdf a {
   cursor: not-allowed;
 }
+
+/* Mark button__ */
+
+.assign_mark_btn {
+  color: #7429eb;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 10px;
+  padding: 3px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid #7429eb;
+}
+
+.assign_mark_btn:hover {
+  background-color: #eeeded;
+}
+
+/* Transparent__ */
+
+.transparent_assign_mark_btn {
+  color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 10px;
+  padding: 3px 20px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
+
+/* Assignment mark modal style__ST */
+
+.assign_mark_parent_container {
+  margin-top: 20px;
+}
+
+.form_wrapper {
+  background: #f6f6f6;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  color: #151515;
+  box-shadow: 0 8px 24px #0000004d;
+}
+
+.form_title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+
+.form_section {
+  margin-bottom: 20px;
+}
+
+.form_label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form_input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #5d21bd;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.form_input:focus {
+  outline: none;
+  border-color: #7429eb;
+}
+
+.form_total {
+  background: linear-gradient(90deg, #7429eb, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.form_submit {
+  margin-top: 25px;
+  background-color: #5d21bd;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form_submit:hover {
+  background-color: #7429eb;
+}
+
+/* Assignment mark modal style__END */

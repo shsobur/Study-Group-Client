@@ -61,6 +61,7 @@ const AssignDetails = () => {
     formData.append("name", topicName);
     formData.append("subject", subject);
     formData.append("mark", mark);
+    formData.append("questionNumber", questions.length);
     formData.append("assignmentFile", pdfFile);
     formData.append("userEmail", user.email);
     formData.append("creatorEmail", createdBy.email);
