@@ -196,3 +196,27 @@
   display: inline-block;
   border: 2px solid #7429eb;
 }
+
+.feedBack_parent_container {
+  text-align: left;
+  margin-top: 30px;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #7329eb0a;
+  border: 2px solid #7429eb;
+}
+
+.feedBack_parent_container h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #151515;
+}
+
+.feedBack_parent_container ul {
+  margin-top: 20px;
+}
+
+.feedBack_parent_container ul li {
+  margin-top: 20px;
+  font-size: 1.4rem;
+}

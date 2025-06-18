@@ -121,10 +121,22 @@ const MyAssign = () => {
                         <div className="assignment_complete_message">
                           <h1>Congratulations!</h1>
                           <p>You got</p>
-                          <div className="assignment_mark_container">45/60</div>
+                          <div className="assignment_mark_container">
+                            {assignment.mark.totalMark}/
+                            {assignment.assignmentMark}
+                          </div>
                           <p>
                             Keep up the good work, you did amazing performance!
                           </p>
+
+                          <div className="feedBack_parent_container">
+                            <h2>Examiner Feedback:</h2>
+                            <ul>
+                              {assignment.mark.examinerFeedback.map((feed, index) => (
+                                <li key={feed}>{index + 1}. {feed}</li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
                       ) : (
                         <div className="assignment_pending_message">

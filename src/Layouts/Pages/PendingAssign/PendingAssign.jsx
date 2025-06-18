@@ -76,13 +76,16 @@ const PendingAssign = () => {
     marks.presentation;
 
   const handleAssignmentMark = async () => {
-    const assignmentMark = [
-      `Based on correct answers ${marks.correct}`,
-      `Based on short and useful extra information ${marks.extra}`,
-      `Based on good PDF layout and organized content ${marks.layout}`,
-      `Based on easy-to-read text ${marks.readable}`,
-      `Based on neat and well-presented answer sheet ${marks.presentation}`,
-    ];
+    const assignmentMark = {
+      totalMark: total,
+      examinerFeedback: [
+        `Based on correct answers - ${marks.correct}/${questionSectionMax}`,
+        `Based on short and useful extra information - ${marks.extra}/${ruleMark}`,
+        `Based on good PDF layout and organized content - ${marks.layout}/${ruleMark}`,
+        `Based on easy-to-read text - ${marks.readable}/${ruleMark}`,
+        `Based on neat and well-presented answer sheet - ${marks.presentation}/${ruleMark}`,
+      ],
+    };
 
     setAssignMarkLoading(true);
     const res = await axiosSecure.patch(
