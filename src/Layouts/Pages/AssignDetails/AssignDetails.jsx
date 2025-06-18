@@ -35,6 +35,7 @@ const AssignDetails = () => {
     createdBy,
   } = assignmentData;
 
+  // Check if the current user already submitted the assignment__
   useEffect(() => {
     setCheckingLoading(true);
     axiosSecure
@@ -47,6 +48,7 @@ const AssignDetails = () => {
       });
   }, [axiosSecure, topicName, user]);
 
+  // Handle file input and only accept PDF files__
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file && file.type === "application/pdf") {
@@ -54,6 +56,7 @@ const AssignDetails = () => {
     }
   };
 
+  // Handle assignment submission and send data to backend__
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -68,6 +71,8 @@ const AssignDetails = () => {
 
     setSubmitLoading(true);
     const res = await axiosSecure.post("/submitted-assignment-data", formData);
+
+    // If submission is successful, reset form and show success alert__
     if (res.data.insertedId) {
       setSubmitLoading(false);
       document.getElementById("modal_close_btn").click();
@@ -79,12 +84,12 @@ const AssignDetails = () => {
       });
 
       setPdfFile(null);
-
       setIsSubmitted(true);
       handleSubmitCount();
     }
   };
 
+  // Update total submission count for the assignment__
   const handleSubmitCount = async () => {
     const newSubmitCount = totalSubmit + 1;
     setUpdateData(newSubmitCount);
