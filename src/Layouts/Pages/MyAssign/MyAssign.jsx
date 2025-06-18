@@ -26,6 +26,17 @@ const MyAssign = () => {
       });
   }, [axiosSecure, user]);
 
+  const handleAssignmentPDF = (file) => {
+    // 1. Make a special link with base64
+    const link = document.createElement("a");
+    link.href = `data:${file.mimetype};base64,${file.data}`;
+    link.download = file.name;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
   return (
     <section id="my_assign_section">
       <div className="main_my_assign_container">
@@ -104,7 +115,7 @@ const MyAssign = () => {
                     </div>
 
                     <div className="my_assign_file_container">
-                      <h3>
+                      <h3 onClick={() => handleAssignmentPDF(assignment.file)}>
                         <a href="#">
                           <PiDownloadSimpleFill /> PDF
                         </a>
@@ -132,9 +143,13 @@ const MyAssign = () => {
                           <div className="feedBack_parent_container">
                             <h2>Examiner Feedback:</h2>
                             <ul>
-                              {assignment.mark.examinerFeedback.map((feed, index) => (
-                                <li key={feed}>{index + 1}. {feed}</li>
-                              ))}
+                              {assignment.mark.examinerFeedback.map(
+                                (feed, index) => (
+                                  <li key={feed}>
+                                    {index + 1}. {feed}
+                                  </li>
+                                )
+                              )}
                             </ul>
                           </div>
                         </div>

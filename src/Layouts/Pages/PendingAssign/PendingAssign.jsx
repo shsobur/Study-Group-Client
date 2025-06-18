@@ -101,6 +101,19 @@ const PendingAssign = () => {
     }
   };
 
+  // Handle assignment pdf download (This download logic was created with the help of AI!)
+  const handleAssignmentPDF = (file) => {
+    const link = document.createElement("a");
+
+    // Create a data URL from base64
+    link.href = `data:${file.mimetype};base64,${file.data}`;
+    link.download = file.name;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
   return (
     <>
       <section id="pending_assignment_section">
@@ -174,7 +187,10 @@ const PendingAssign = () => {
 
                     <div className="pending_assign_card_file">
                       {isActive === index ? (
-                        <button className="pending_assign_active_pdf">
+                        <button
+                          onClick={() => handleAssignmentPDF(assignment.file)}
+                          className="pending_assign_active_pdf"
+                        >
                           <MdOutlineFileDownload /> <a href="#">PDF</a>
                         </button>
                       ) : (
