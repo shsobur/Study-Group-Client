@@ -8,14 +8,17 @@ import AssignCard from "../../Components/AssignCard/AssignCard";
 import { useContext, useEffect, useState } from "react";
 
 const Assignment = () => {
-  const axiosPublic = useAxiosPublic();
-  const { user } = useContext(AuthContext);
   const [subject, setSubject] = useState("");
   const [level, setLevel] = useState("");
   const [recent, setRecent] = useState("");
-  const [loading, setLoading] = useState(false);
   const [assignments, setAssignments] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+
+  const axiosPublic = useAxiosPublic();
+  const { user } = useContext(AuthContext);
+
+  // Fetch filtered assignments whenever filters or user email changes__
   useEffect(() => {
     setLoading(true);
     axiosPublic

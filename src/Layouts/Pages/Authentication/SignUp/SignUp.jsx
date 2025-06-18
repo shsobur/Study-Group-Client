@@ -24,6 +24,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
+  // Handle form submission to create user and update profile__
   const onSubmit = (data) => {
     const name = data.name;
     const photo = data.photo;
@@ -33,6 +34,8 @@ const SignUp = () => {
     handleCreateUser(email, password)
       .then(() => {
         handleUserProfile(name, photo)
+
+        // Show success toast after profile update__
           .then(() => {
             const Toast = Swal.mixin({
               toast: true,
