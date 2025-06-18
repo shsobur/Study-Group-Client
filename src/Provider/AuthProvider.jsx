@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
   const [userLoading, setUserLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
 
-  // Sign in with google__
+  // Sign in using Google popup authentication__
   const handleGoogleSignIn = async () => {
     setLoading(true);
 
@@ -32,13 +32,13 @@ const AuthProvider = ({ children }) => {
       const result = await signInWithPopup(auth, googleProvider);
       return result;
     } catch (error) {
-      console.log("Error google signing up:", error);
+      console.error("Error google signing up:", error);
     } finally {
       setLoading(false);
     }
   };
 
-  // Handle sign up__
+  // Create user with email and password__
   const handleCreateUser = async (email, password) => {
     setLoading(true);
 
@@ -50,14 +50,14 @@ const AuthProvider = ({ children }) => {
       );
       return result;
     } catch (error) {
-      console.log("Error signing up:", error);
+      console.error("Error signing up:", error);
       throw error;
     } finally {
       setLoading(false);
     }
   };
 
-  // Handle sign in__
+  // Sign in existing user with email and password__
   const handleLoginUser = async (email, password) => {
     setLoading(true);
 
@@ -65,14 +65,14 @@ const AuthProvider = ({ children }) => {
       const result = await signInWithEmailAndPassword(auth, email, password);
       return result;
     } catch (error) {
-      console.log("Error signing in: error");
+      console.error("Error signing in:", error);
       throw error;
     } finally {
       setLoading(false);
     }
   };
 
-  // Monitor user__
+  // Monitor auth state changes (login/logout)__
   useEffect(() => {
     setUserLoading(true);
 
@@ -86,7 +86,7 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  // Update user profile__
+  // Update current user's display name and photo URL__
   const handleUserProfile = async (name, photo) => {
     setLoading(true);
 
@@ -97,14 +97,14 @@ const AuthProvider = ({ children }) => {
       });
       return result;
     } catch (error) {
-      console.log("Error signing in: error");
+      console.error("Error signing in:", error);
       throw error;
     } finally {
       setLoading(false);
     }
   };
 
-  // Handle log out__
+  // Sign out the current user__
   const logOut = () => {
     return signOut(auth);
   };
