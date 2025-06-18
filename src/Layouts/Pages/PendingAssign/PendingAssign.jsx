@@ -16,8 +16,10 @@ const PendingAssign = () => {
   const { user } = useContext(AuthContext);
 
   const [isActive, setIsActive] = useState(null);
+
   const [assignMarkLoading, setAssignMarkLoading] = useState(false);
   const [pendingAssignLoading, setPendingAssignLoading] = useState(false);
+
   const [pendingAssignments, setPendingAssignments] = useState([]);
   const [singleAssignment, setSingleAssignment] = useState(null);
   const [assignmentId, setAssignmentId] = useState(null);
@@ -30,18 +32,13 @@ const PendingAssign = () => {
     presentation: 0,
   });
 
-  // Handle assignment mark variable__
-  const totalQuestions = singleAssignment?.questionNumber;
-  const totalMark = Number(singleAssignment?.assignmentMark);
-  const questionSectionMax = totalQuestions * 5;
-  const remainingMark = totalMark - questionSectionMax;
-  const ruleMark = parseFloat((remainingMark / 4).toFixed(2));
-
+  // Fetch pending assignments on component mount__
   useEffect(() => {
     handlePendingAssignments();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [axiosSecure, user]);
 
+  // Get all pending assignments__
   const handlePendingAssignments = async () => {
     setPendingAssignLoading(true);
 
@@ -53,8 +50,14 @@ const PendingAssign = () => {
       });
   };
 
-  // Handle assignment mark data__
+  // Calculate mark distribution and rules based on total questions and marks__
+  const totalQuestions = singleAssignment?.questionNumber;
+  const totalMark = Number(singleAssignment?.assignmentMark);
+  const questionSectionMax = totalQuestions * 5;
+  const remainingMark = totalMark - questionSectionMax;
+  const ruleMark = parseFloat((remainingMark / 4).toFixed(2));
 
+  // Handle mark input changes and validation for each marking field__
   const handleChange = (field, value, max) => {
     const num = parseFloat(value);
     setMarks((prev) => ({
@@ -68,6 +71,20 @@ const PendingAssign = () => {
     }));
   };
 
+  // Download assignment PDF using base64 encoded data (This download logic was created with the help of AI!)
+  const handleAssignmentPDF = (file) => {
+    const link = document.createElement("a");
+
+    // Create a data URL from base64
+    link.href = `data:${file.mimetype};base64,${file.data}`;
+    link.download = file.name;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
+  // Calculate total score from all mark criteria__
   const total =
     marks.correct +
     marks.extra +
@@ -75,6 +92,7 @@ const PendingAssign = () => {
     marks.readable +
     marks.presentation;
 
+  // Submit total marks and feedback for the selected assignment__
   const handleAssignmentMark = async () => {
     const assignmentMark = {
       totalMark: total,
@@ -99,19 +117,6 @@ const PendingAssign = () => {
       document.getElementById("modal_close_btn").click();
       Swal.fire("Assignment mark submitted successfully!");
     }
-  };
-
-  // Handle assignment pdf download (This download logic was created with the help of AI!)
-  const handleAssignmentPDF = (file) => {
-    const link = document.createElement("a");
-
-    // Create a data URL from base64
-    link.href = `data:${file.mimetype};base64,${file.data}`;
-    link.download = file.name;
-
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
   };
 
   return (
