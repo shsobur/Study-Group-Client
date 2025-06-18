@@ -23,12 +23,14 @@ import { useContext, useState } from "react";
 
 const Navbar = () => {
   const menuRef = useRef();
+
   const [open, setOpen] = useState(false);
-  const [isScrollingDown, setIsScrollingDown] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrollingDown, setIsScrollingDown] = useState(null);
+
   const { user, logOut } = useContext(AuthContext);
 
-  // Handle Close Dropdown__
+  // Handle closing the dropdown when clicking outside__
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -39,7 +41,7 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Handle Scrolling__
+  // Detect scroll direction (up or down)__
   useEffect(() => {
     let lastScrollTop =
       window.pageYOffset || document.documentElement.scrollTop;
@@ -61,7 +63,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle Stop Scroll__
+  // Disable page scrolling when mobile menu is open__
   useEffect(() => {
     if (!menuOpen) {
       document.body.style.overflow = "auto";
@@ -70,7 +72,7 @@ const Navbar = () => {
     document.body.style.overflow = "hidden";
   }, [menuOpen]);
 
-  // Handle logout__
+  // Handle user logout with confirmation__
   const handleLogOut = () => {
     Swal.fire({
       title: "Are you sure?",
