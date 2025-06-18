@@ -11,9 +11,6 @@ import { FcOk } from "react-icons/fc";
 import { useContext, useState } from "react";
 
 const CreateAssign = () => {
-  const { user } = useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
-
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
   const [subject, setSubject] = useState("");
@@ -22,25 +19,37 @@ const CreateAssign = () => {
   const [instruction, setInstruction] = useState("");
   const [mark, setMark] = useState(30);
   const [questions, setQuestions] = useState([""]);
+
+  const [submitLoading, setSubmitLoading] = useState(false);
+
+  const { user } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+
+  // Default image URL when no image is provided__
   const noImage = "https://i.postimg.cc/mr6N2bMP/no-image.png";
 
+  // Update question text at a specific index__
   const handleQuestionChange = (index, value) => {
     const updated = [...questions];
     updated[index] = value;
     setQuestions(updated);
   };
 
+  // Add a new empty question field__
   const addQuestion = () => {
     setQuestions([...questions, ""]);
   };
 
+  // Handle assignment form submission and send data to backend__
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Use default image if none selected__
     if (image === null || "") {
       setImage(noImage);
     }
 
+    // Prepare assignment object to be sent, including questions with numbering__
     const assignment = {
       title,
       image,
@@ -61,8 +70,12 @@ const CreateAssign = () => {
       },
     };
 
+    setSubmitLoading(true);
     const res = await axiosPublic.post("/new-assignment", assignment);
     if (res.data.insertedId) {
+      setSubmitLoading(false);
+
+      // Reset form fields and show success alert__
       Swal.fire({
         title: "Success",
         text: "Assignment Successfully Created",
@@ -289,9 +302,15 @@ const CreateAssign = () => {
                     />
                   </div>
 
-                  <button type="submit" className="assign_form_submit_btn">
-                    Submit Assignment
-                  </button>
+                  {submitLoading ? (
+                    <button className="assign_form_submit_btn">
+                      Working...
+                    </button>
+                  ) : (
+                    <button type="submit" className="assign_form_submit_btn">
+                      Submit Assignment
+                    </button>
+                  )}
                 </form>
               </div>
             </div>
