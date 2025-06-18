@@ -11,12 +11,14 @@ import { useNavigate } from "react-router";
 import { useContext } from "react";
 
 const SocialLogin = () => {
-  const { handleGoogleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { handleGoogleSignIn } = useContext(AuthContext);
 
-  const handleGooglAuth = () => {
+  // Handle Google authentication and navigate on success__
+  const handleGoogleAuth = () => {
     handleGoogleSignIn()
       .then(() => {
+        // Show success toast notification after login__
         const Toast = Swal.mixin({
           toast: true,
           position: "top",
@@ -44,7 +46,7 @@ const SocialLogin = () => {
     <>
       <section id="social_login_section">
         <button
-          onClick={handleGooglAuth}
+          onClick={handleGoogleAuth}
           type="button"
           className="google_button"
         >
