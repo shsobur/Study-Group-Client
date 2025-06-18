@@ -14,7 +14,7 @@ import { useContext, useState } from "react";
 
 const SignIn = () => {
   const { handleLoginUser, loading } = useContext(AuthContext);
-  const [error, serError] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -23,11 +23,13 @@ const SignIn = () => {
     formState: { errors },
   } = useForm();
 
+  // Handle login form submission__
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
 
     handleLoginUser(email, password)
+      // Show success toast and navigate to home__
       .then(() => {
         const Toast = Swal.mixin({
           toast: true,
@@ -47,7 +49,7 @@ const SignIn = () => {
         navigate("/");
       })
       .catch((error) => {
-        serError("Invalid! user or password. Try again");
+        setError("Invalid! user or password. Try again");
         console.log(error);
       });
   };
