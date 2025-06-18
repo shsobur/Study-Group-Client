@@ -10,12 +10,14 @@ import { PiDownloadSimpleFill } from "react-icons/pi";
 import { useContext, useEffect, useState } from "react";
 
 const MyAssign = () => {
-  const { user } = useContext(AuthContext);
-  const axiosSecure = useAxiosSecure();
   const [myAssignments, setMyAssignments] = useState([]);
   const [assignIndex, setAssignIndex] = useState(null);
   const [myAssignLoading, setMyAssignLoading] = useState(false);
 
+  const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
+
+  // Fetch user's submitted assignments from the server__
   useEffect(() => {
     setMyAssignLoading(true);
     axiosSecure
@@ -26,8 +28,8 @@ const MyAssign = () => {
       });
   }, [axiosSecure, user]);
 
+  // Handle downloading assignment file as PDF using base64 string
   const handleAssignmentPDF = (file) => {
-    // 1. Make a special link with base64
     const link = document.createElement("a");
     link.href = `data:${file.mimetype};base64,${file.data}`;
     link.download = file.name;
