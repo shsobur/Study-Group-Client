@@ -16,6 +16,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { handleUserProfile, handleCreateUser, loading } =
     useContext(AuthContext);
+  const from = location.state?.from?.pathname || "/";
 
   const {
     watch,
@@ -34,8 +35,7 @@ const SignUp = () => {
     handleCreateUser(email, password)
       .then(() => {
         handleUserProfile(name, photo)
-
-        // Show success toast after profile update__
+          // Show success toast after profile update__
           .then(() => {
             const Toast = Swal.mixin({
               toast: true,
@@ -57,7 +57,7 @@ const SignUp = () => {
             console.log(error);
           });
 
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);

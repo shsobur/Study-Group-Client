@@ -16,6 +16,7 @@ const SignIn = () => {
   const { handleLoginUser, loading } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -46,7 +47,7 @@ const SignIn = () => {
           icon: "success",
           title: "Signed in successfully",
         });
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError("Invalid! user or password. Try again");

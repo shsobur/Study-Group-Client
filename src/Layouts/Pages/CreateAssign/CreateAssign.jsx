@@ -17,7 +17,7 @@ const CreateAssign = () => {
   const [level, setLevel] = useState("");
   const [topicName, setTopicName] = useState("");
   const [instruction, setInstruction] = useState("");
-  const [mark, setMark] = useState(30);
+  const [mark, setMark] = useState(40);
   const [questions, setQuestions] = useState([""]);
 
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -113,7 +113,7 @@ const CreateAssign = () => {
                   </h1>
 
                   <section className="assign_role_section">
-                    <h2 className="assign_role_subtitle">🔹 General Rules</h2>
+                    <h2 className="assign_role_subtitle">🟣 General Rules</h2>
                     <ul className="assign_role_list">
                       <li>Use only English (simple and clear).</li>
                       <li>
@@ -123,9 +123,9 @@ const CreateAssign = () => {
                       <li>
                         Choose the appropriate level:
                         <ul>
-                          <li>Easy → 1–2 short questions</li>
-                          <li>Medium → 2–3 questions</li>
-                          <li>Hard → 3–4 thoughtful questions</li>
+                          <li>Easy → 3–4 short questions</li>
+                          <li>Medium → 4–5 questions</li>
+                          <li>Hard → 5+ thoughtful questions</li>
                         </ul>
                       </li>
                       <li>Write the full topic name (be specific).</li>
@@ -134,10 +134,10 @@ const CreateAssign = () => {
 
                   <section className="assign_role_section">
                     <h2 className="assign_role_subtitle">
-                      🔹 Instruction Writing Rules
+                      🟣 Instruction Writing Rules
                     </h2>
                     <ul className="assign_role_list">
-                      <li>Keep it short and clear (3–4 lines).</li>
+                      <li>Keep it short and clear (8–20 lines).</li>
                       <li>Tell the student what to read and how to answer.</li>
                       <li>
                         Example: "Read the passage carefully. Then answer all
@@ -148,7 +148,7 @@ const CreateAssign = () => {
 
                   <section className="assign_role_section">
                     <h2 className="assign_role_subtitle">
-                      🔹 Question Writing Rules
+                      🟣 Question Writing Rules
                     </h2>
                     <ul className="assign_role_list">
                       <li>Use simple words and sentence structures.</li>
@@ -159,20 +159,26 @@ const CreateAssign = () => {
 
                   <section className="assign_role_section">
                     <h2 className="assign_role_subtitle">
-                      🔹 Mark & Submission
+                      🟣 Mark & Submission
                     </h2>
                     <ul className="assign_role_list">
-                      <li>Give a mark between 30 and 60.</li>
+                      <li>Start mark from 40 or 40+.</li>
+                      <li>
+                        Each question is worth 5 marks. So if there are 5
+                        questions, the total should be (5 × 5 + 10 = 35). Just
+                        make sure to always add at least 10 extra marks. You can
+                        give more if you want.
+                      </li>
                     </ul>
                   </section>
 
                   <section className="assign_role_section">
-                    <h2 className="assign_role_subtitle">🔹 Final Checklist</h2>
+                    <h2 className="assign_role_subtitle">🟣 Final Checklist</h2>
                     <ul className="assign_role_list">
-                      <li>Fill in your name and email correctly.</li>
                       <li>Check spelling and grammar.</li>
                       <li>
-                        Attach reading content or helpful links if needed.
+                        You can attach reading content or helpful links on
+                        instruction if needed.
                       </li>
                     </ul>
                   </section>
@@ -191,7 +197,9 @@ const CreateAssign = () => {
 
             <div className="create_assign_right_container">
               <div className="assign_form_container">
-                <h2 className="assign_form_title">Start Creating</h2>
+                <h2 className="assign_form_title">
+                  Start Creating Assignments
+                </h2>
                 <form onSubmit={handleSubmit} className="assign_form_wrapper">
                   <div className="assign_form_group">
                     <label>Title</label>
@@ -291,11 +299,21 @@ const CreateAssign = () => {
                   </div>
 
                   <div className="assign_form_group">
-                    <label>Mark (30 - 60)</label>
+                    <label>
+                      You have to start mark from{" "}
+                      <b>minimum {questions.length * 5 + 10}</b> <br />
+                      Follow{" "}
+                      <b>
+                        <i>"General Rules point 03"</i>
+                      </b>{" "}
+                      and{" "}
+                      <b>
+                        <i>"Mark & Submission point 02"</i>
+                      </b>
+                    </label>
                     <input
                       type="number"
-                      min={30}
-                      max={60}
+                      min={40}
                       required
                       value={mark}
                       onChange={(e) => setMark(e.target.value)}

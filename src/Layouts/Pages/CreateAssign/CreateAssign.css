@@ -6,7 +6,7 @@
 }
 
 .create_assign_title h1 {
-  background: linear-gradient(360deg, #0a0a6e, #00c4ff);
+  background: linear-gradient(90deg, #6b26db, #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -30,14 +30,14 @@
   width: 35%;
   padding: 10px;
   border-radius: 8px;
-  border: 2px solid #d4d3d3;
+  border: 2px solid #6b26db;
 }
 
 .create_assign_right_container {
   width: 65%;
   padding: 10px;
   border-radius: 8px;
-  border: 2px solid #0392d8;
+  border: 2px solid #6b26db;
 }
 
 /* Left side content style__ */
@@ -69,7 +69,7 @@
 .assign_role_title {
   text-align: center;
   font-size: 2rem;
-  color: #0392d8;
+  color: #6b26db;
   margin-bottom: 1.5rem;
 }
 
@@ -111,7 +111,7 @@
 
 .assign_form_title {
   text-align: center;
-  color: #0392d8;
+  color: #6b26db;
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -133,7 +133,7 @@
 .assign_form_group select,
 .assign_form_group textarea {
   padding: 0.6rem;
-  border: 1px solid #0392d8;
+  border: 1px solid #6b26db;
   border-radius: 6px;
   font-size: 1rem;
 }
@@ -144,18 +144,18 @@
 
 .assign_form_add_btn {
   align-self: flex-start;
-  background-color: #e0f7f5;
+  background-color: #6b26db1c;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  color: #0392d8;
+  color: #6b26db;
   cursor: pointer;
   font-weight: bold;
 }
 
 .assign_form_submit_btn {
   padding: 0.75rem;
-  background-color: #0392d8;
+  background-color: #6b26db;
   color: white;
   border: none;
   border-radius: 6px;

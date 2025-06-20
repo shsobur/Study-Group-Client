@@ -22,6 +22,7 @@ const PendingAssign = () => {
 
   const [pendingAssignments, setPendingAssignments] = useState([]);
   const [singleAssignment, setSingleAssignment] = useState(null);
+  console.log(singleAssignment);
   const [assignmentId, setAssignmentId] = useState(null);
   const [errors, setErrors] = useState({});
   const [marks, setMarks] = useState({
@@ -126,7 +127,6 @@ const PendingAssign = () => {
           <h1 className="pending_assign_title">Pending Assignments</h1>
 
           <div className="pending_assign_card_parent_container">
-            <h1>Total assignment pending: {pendingAssignments.length}</h1>
             {pendingAssignLoading ? (
               // This loading style is coming from "assignment component" (assignment.css)|
               <div className="loading_parent_container">
@@ -153,6 +153,9 @@ const PendingAssign = () => {
                       </p>
                       <p>
                         <b>Submitted on:</b> {assignment.createdAt}
+                      </p>
+                      <p className="text-blue-700">
+                        <b className="text-black">Student email:</b> <u>{assignment.userEmail}</u>
                       </p>
                     </div>
 
