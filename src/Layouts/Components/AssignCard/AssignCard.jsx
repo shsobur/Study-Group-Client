@@ -22,13 +22,20 @@ const AssignCard = ({ assignment }) => {
     createdBy,
   } = assignment;
 
+  // Default image URL when no image is provided__
+  const noImage = "https://i.postimg.cc/mr6N2bMP/no-image.png";
+
   return (
     <>
       <section>
         <div className="card-container">
           <Link to={`/assignment-details/${_id}`}>
             <a href="#" className="hero-image-container">
-              <img className="hero-image" src={image} alt="Assignment image" />
+              <img
+                className="hero-image"
+                src={image === null || "" ? noImage : image}
+                alt="Assignment image"
+              />
             </a>
           </Link>
           <main className="main-content">

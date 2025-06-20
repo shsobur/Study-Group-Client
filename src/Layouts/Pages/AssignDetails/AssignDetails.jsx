@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 
 // Package__
 import Swal from "sweetalert2";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { RxCrossCircled } from "react-icons/rx";
 
 // From react__
@@ -23,6 +23,7 @@ const AssignDetails = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const assignmentData = useLoaderData();
+  const navigate = useNavigate();
   const {
     _id,
     topicName,
@@ -99,6 +100,38 @@ const AssignDetails = () => {
     if (res.data.modifiedCount) {
       setUpdateCount(true);
     }
+  };
+
+  // Delete assignment with confirmation__
+  const handleDeleteAssignment = async () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .delete(`/delete-assignment/${_id}`)
+          .then((res) => {
+            if (res.data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your assignment has been deleted.",
+                icon: "success",
+              });
+
+              navigate("/assignments");
+            }
+          })
+          .catch((error) => {
+            console.log("Failed to delete", error);
+          });
+      }
+    });
   };
 
   return (
@@ -269,7 +302,11 @@ const AssignDetails = () => {
                     Update
                   </button>{" "}
                   or{" "}
-                  <button className="assign_change_btn" id="assign_delete_btn">
+                  <button
+                    onClick={handleDeleteAssignment}
+                    className="assign_change_btn"
+                    id="assign_delete_btn"
+                  >
                     Delete
                   </button>{" "}
                   the assignment?

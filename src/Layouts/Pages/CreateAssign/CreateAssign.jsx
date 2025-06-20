@@ -25,9 +25,6 @@ const CreateAssign = () => {
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
 
-  // Default image URL when no image is provided__
-  const noImage = "https://i.postimg.cc/mr6N2bMP/no-image.png";
-
   // Update question text at a specific index__
   const handleQuestionChange = (index, value) => {
     const updated = [...questions];
@@ -43,11 +40,6 @@ const CreateAssign = () => {
   // Handle assignment form submission and send data to backend__
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Use default image if none selected__
-    if (image === null || "") {
-      setImage(noImage);
-    }
 
     // Prepare assignment object to be sent, including questions with numbering__
     const assignment = {
@@ -69,6 +61,8 @@ const CreateAssign = () => {
         email: user.email,
       },
     };
+
+    console.log(assignment);
 
     setSubmitLoading(true);
     const res = await axiosPublic.post("/new-assignment", assignment);
