@@ -12,7 +12,14 @@ const Banner = () => {
         <div className="main_banner_section_container">
           <SvgElement></SvgElement>
 
-          <div className="banner_title_container">
+          <div
+            data-aos="zoom-in-down"
+            data-aos-easing="linear"
+            data-aos-once="true"
+            data-aos-anchor-placement="top-center"
+            data-aos-duration="1300"
+            className="banner_title_container"
+          >
             <h1>
               <i>Smart Minds, Shared Goals</i>
             </h1>
