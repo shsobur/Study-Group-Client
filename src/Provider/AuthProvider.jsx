@@ -1,5 +1,6 @@
 // File path__
 import auth from "../Firebase/firebase.config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 // Package__
 import {
@@ -23,6 +24,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [userLoading, setUserLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
+  const axiosPublic = useAxiosPublic();
 
   // Sign in using Google popup authentication__
   const handleGoogleSignIn = async () => {
@@ -72,20 +74,6 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // Monitor auth state changes (login/logout)__
-  useEffect(() => {
-    setUserLoading(true);
-
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setUserLoading(false);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
   // Update current user's display name and photo URL__
   const handleUserProfile = async (name, photo) => {
     setLoading(true);
@@ -108,6 +96,29 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     return signOut(auth);
   };
+
+  // Monitor auth state changes (login/logout)__
+  useEffect(() => {
+    setUserLoading(true);
+
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+
+      if (currentUser) {
+        const userEmail = { email: currentUser.email };
+
+        axiosPublic.post("/jwt", userEmail, {withCredentials: true}).then((res) => {
+          console.log(res.data);
+        });
+      }
+
+      setUserLoading(false);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [axiosPublic]);
 
   const authInfo = {
     user,

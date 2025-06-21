@@ -48,6 +48,12 @@ const PendingAssign = () => {
       .then((res) => {
         setPendingAssignments(res.data);
         setPendingAssignLoading(false);
+      })
+      .catch((error) => {
+        console.log("Failed to load pending assignment", error);
+      })
+      .finally(() => {
+        setPendingAssignLoading(false);
       });
   };
 
@@ -155,7 +161,8 @@ const PendingAssign = () => {
                         <b>Submitted on:</b> {assignment.createdAt}
                       </p>
                       <p className="text-blue-700">
-                        <b className="text-black">Student email:</b> <u>{assignment.userEmail}</u>
+                        <b className="text-black">Student email:</b>{" "}
+                        <u>{assignment.userEmail}</u>
                       </p>
                     </div>
 
