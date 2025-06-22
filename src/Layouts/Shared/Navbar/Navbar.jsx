@@ -128,12 +128,14 @@ const Navbar = () => {
                 <li>Assignments</li>
               </NavLink>
 
-              <NavLink
-                to="/pending-assignments"
-                className={({ isActive }) => (isActive ? "active_style" : "")}
-              >
-                <li>Pending Assignments</li>
-              </NavLink>
+              {user && (
+                <NavLink
+                  to="/pending-assignments"
+                  className={({ isActive }) => (isActive ? "active_style" : "")}
+                >
+                  <li>Pending Assignments</li>
+                </NavLink>
+              )}
             </ul>
 
             {user ? (
@@ -168,19 +170,26 @@ const Navbar = () => {
                   <hr></hr>
                   <hr></hr>
 
-                  <Link to="/create-assignments" onClick={() => setOpen(!open)}>
-                    <span href="#" className="dropdown_item">
-                      <HiOutlinePencilAlt />
-                      Create Assignments
-                    </span>
-                  </Link>
+                  {user && (
+                    <Link
+                      to="/create-assignments"
+                      onClick={() => setOpen(!open)}
+                    >
+                      <span href="#" className="dropdown_item">
+                        <HiOutlinePencilAlt />
+                        Create Assignments
+                      </span>
+                    </Link>
+                  )}
 
-                  <Link to="/my-assignments" onClick={() => setOpen(!open)}>
-                    <span className="dropdown_item">
-                      <FiCheckSquare />
-                      My Attempted Assignments
-                    </span>
-                  </Link>
+                  {user && (
+                    <Link to="/my-assignments" onClick={() => setOpen(!open)}>
+                      <span className="dropdown_item">
+                        <FiCheckSquare />
+                        My Attempted Assignments
+                      </span>
+                    </Link>
+                  )}
 
                   {user ? (
                     <span onClick={handleLogOut} className="dropdown_item">
@@ -227,33 +236,43 @@ const Navbar = () => {
                     <MdOutlineAssignment /> _Assignments
                   </li>
                 </NavLink>
-                <NavLink
-                  to="/pending-assignments"
-                  className={({ isActive }) => (isActive ? "active_style" : "")}
-                >
-                  <li onClick={() => setMenuOpen(!menuOpen)}>
-                    <RxLapTimer /> _Pending Assignments
-                  </li>
-                </NavLink>
+                {user && (
+                  <NavLink
+                    to="/pending-assignments"
+                    className={({ isActive }) =>
+                      isActive ? "active_style" : ""
+                    }
+                  >
+                    <li onClick={() => setMenuOpen(!menuOpen)}>
+                      <RxLapTimer /> _Pending Assignments
+                    </li>
+                  </NavLink>
+                )}
               </ul>
 
               <div className="others_routes_container">
                 <ul>
-                  <NavLink
-                    to="/create-assignments"
-                    className={({ isActive }) =>
-                      isActive ? "dropdown_active_style" : ""
-                    }
-                  >
-                    <li onClick={() => setMenuOpen(!menuOpen)}>
-                      <HiOutlinePencilAlt /> Create Assignments
-                    </li>
-                  </NavLink>
-                  <Link to="/dashboard">
-                    <li onClick={() => setMenuOpen(!menuOpen)}>
-                      <FiCheckSquare size={18} /> My Attempted Assignments
-                    </li>
-                  </Link>
+                  {user && (
+                    <NavLink
+                      to="/create-assignments"
+                      className={({ isActive }) =>
+                        isActive ? "dropdown_active_style" : ""
+                      }
+                    >
+                      <li onClick={() => setMenuOpen(!menuOpen)}>
+                        <HiOutlinePencilAlt /> Create Assignments
+                      </li>
+                    </NavLink>
+                  )}
+
+                  {user && (
+                    <Link to="/my-assignments">
+                      <li onClick={() => setMenuOpen(!menuOpen)}>
+                        <FiCheckSquare size={18} /> My Attempted Assignments
+                      </li>
+                    </Link>
+                  )}
+
                   {user ? (
                     <li onClick={handleLogOut}>
                       <PiSignIn />

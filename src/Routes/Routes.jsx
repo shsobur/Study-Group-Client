@@ -12,6 +12,7 @@ import HomePageLayout from "../Layouts/Pages/Home/HomePageLayout/HomePageLayout"
 
 // Package__
 import { createBrowserRouter } from "react-router";
+import VerifyUser from "../VerifyUser/VerifyUser";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/assignment-details/:id",
-        element: <AssignDetails></AssignDetails>,
+        element: (
+          <VerifyUser>
+            <AssignDetails></AssignDetails>
+          </VerifyUser>
+        ),
         loader: ({ params }) =>
           fetch(
             `${import.meta.env.VITE_SERVER_API}/assignment-details/${params.id}`
@@ -37,7 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/pending-assignments",
-        element: <PendingAssign></PendingAssign>,
+        element: (
+          <VerifyUser>
+            <PendingAssign></PendingAssign>
+          </VerifyUser>
+        ),
       },
       {
         path: "/create-assignments",

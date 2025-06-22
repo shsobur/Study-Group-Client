@@ -2,25 +2,26 @@
 import { AuthContext } from "../Provider/AuthProvider";
 
 // 📦 Package__
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router";
 
 // ⚛️ From react__
 import { useContext } from "react";
 
 const VerifyUser = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
+  const location = useLocation();
+  const { user, userLoading } = useContext(AuthContext);
 
   // Show loading spinner while authentication state is being determined__
-  if (loading) {
+  if (userLoading) {
     return (
       <>
-        <div className="w-full mt-5 mb-5 gap-5 flex justify-center flex-col items-center">
-          <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-[#000000]"></div>
-          <h1 className="text-3xl text-center font-bold text-[#000000]">
-            loading...
-            <br />
-            <span className="text-lg font-semibold"> Please wait!</span>
-          </h1>
+        <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black bg-opacity-30">
+          <div className="flex flex-col items-center gap-5 bg-white px-10 py-8 rounded-2xl shadow-lg">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-[#511da5]"></div>
+            <h1 className="text-2xl text-center font-bold text-[#511da5]">
+              Updating user data...
+            </h1>
+          </div>
         </div>
       </>
     );
@@ -32,7 +33,7 @@ const VerifyUser = ({ children }) => {
   }
 
   // If not authenticated, redirect to sign-in__
-  return <Navigate to="/signin" state={{ from: location }} replace></Navigate>;
+  return <Navigate to="/sign-in" state={{ from: location }} replace></Navigate>;
 };
 
 export default VerifyUser;
