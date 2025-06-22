@@ -37,7 +37,10 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `${import.meta.env.VITE_SERVER_API}/assignment-details/${params.id}`
+            `${import.meta.env.VITE_SERVER_API}/assignment-details/${
+              params.id
+            }`,
+            { credentials: "include" }
           ),
       },
       {
@@ -50,11 +53,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/create-assignments",
-        element: <CreateAssign></CreateAssign>,
+        element: (
+          <VerifyUser>
+            <CreateAssign></CreateAssign>
+          </VerifyUser>
+        ),
       },
       {
         path: "/my-assignments",
-        element: <MyAssign></MyAssign>,
+        element: (
+          <VerifyUser>
+            <MyAssign></MyAssign>
+          </VerifyUser>
+        ),
       },
       {
         path: "/sign-in",

@@ -91,7 +91,7 @@ const Assignment = () => {
           {loading ? (
             <div className="loading_parent_container">
               <div className="loading_container">
-                <p>Loading. . .</p>
+                <p>Loading Assignment. . .</p>
                 <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
               </div>
             </div>

@@ -15,8 +15,8 @@ const VerifyUser = ({ children }) => {
   if (userLoading) {
     return (
       <>
-        <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black bg-opacity-30">
-          <div className="flex flex-col items-center gap-5 bg-white px-10 py-8 rounded-2xl shadow-lg">
+        <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white bg-opacity-30">
+          <div className="flex flex-col items-center gap-5 bg-purple-100 px-10 py-8 rounded-2xl shadow-lg">
             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-[#511da5]"></div>
             <h1 className="text-2xl text-center font-bold text-[#511da5]">
               Updating user data...

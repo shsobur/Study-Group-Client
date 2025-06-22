@@ -1,6 +1,6 @@
 // File path__
 import "./CreateAssign.css";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 // Package__
@@ -23,7 +23,7 @@ const CreateAssign = () => {
   const [submitLoading, setSubmitLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure()
 
   // Update question text at a specific index__
   const handleQuestionChange = (index, value) => {
@@ -62,10 +62,8 @@ const CreateAssign = () => {
       },
     };
 
-    console.log(assignment);
-
     setSubmitLoading(true);
-    const res = await axiosPublic.post("/new-assignment", assignment);
+    const res = await axiosSecure.post("/new-assignment", assignment);
     if (res.data.insertedId) {
       setSubmitLoading(false);
 
