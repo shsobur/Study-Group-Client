@@ -36,7 +36,6 @@
   font-size: 22px;
   font-weight: 700;
   width: 2%;
-  border-bottom: 2px dashed purple;
 }
 
 /* _____________________________ */
@@ -325,6 +324,10 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .pending_assign_title {
+    font-size: 2.8rem;
+  }
+
   .pending_assign_card_container {
     padding: 10px;
     gap: 8px;
@@ -368,12 +371,17 @@
 }
 
 @media screen and (max-width: 768px) {
+  .pending_assign_title {
+    font-size: 2.6rem;
+  }
+
   .pending_assign_card_container {
     flex-direction: column;
   }
 
   .pending_assign_number {
     width: 100%;
+    border-bottom: 2px dashed purple;
   }
 
   .pending_assign_card_title {
@@ -452,7 +460,39 @@
 }
 
 @media screen and (max-width: 640px) {
+  .pending_assign_title {
+    font-size: 2.5rem;
+  }
+
+  .pending_assign_card_title h2 {
+    font-size: 1.5rem;
+  }
+
+  .pending_assign_card_title p {
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 475px) {
+  .pending_assign_title {
+    font-size: 1.8rem;
+  }
+
+  .pending_assign_card_title h2 {
+    font-size: 1.3rem;
+  }
+
+  .pending_assign_card_title p {
+    font-size: 18px;
+  }
+
+  .assign_pending_status_btn {
+    width: 50%;
+    padding: 8px 5px;
+  }
+
+  .assign_completed_status_btn {
+    width: 50%;
+    padding: 8px 5px;
+  }
 }
