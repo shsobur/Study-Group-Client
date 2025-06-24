@@ -26,7 +26,7 @@ const Banner = () => {
             <p>
               Build knowledge together in a focused and friendly environment.
             </p>
-            <Link>
+            <Link to="/assignments">
               <button>Get Stared {"->"}</button>
             </Link>
           </div>
