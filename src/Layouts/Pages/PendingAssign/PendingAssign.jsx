@@ -194,7 +194,7 @@ const PendingAssign = () => {
                               : "none_active_assign_style"
                           }
                         >
-                          Check Assignment PDF
+                          Check PDF
                         </button>
                       )}
                     </div>

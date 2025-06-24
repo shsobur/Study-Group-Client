@@ -36,6 +36,7 @@
   font-size: 22px;
   font-weight: 700;
   width: 2%;
+  border-bottom: 2px dashed purple;
 }
 
 /* _____________________________ */
@@ -43,6 +44,7 @@
 
 .pending_assign_card_title {
   width: 45%;
+  /* border: 2px solid purple; */
 }
 
 .pending_assign_card_title h2 {
@@ -62,6 +64,10 @@
 /* _____________________________ */
 /* _____________________________ */
 
+/* .pending_assign_card_mark {
+  border: 2px solid purple;
+} */
+
 .pending_assign_card_mark h2 {
   font-size: 18px;
   color: #5a5959;
@@ -75,6 +81,10 @@
 
 /* _____________________________ */
 /* _____________________________ */
+
+/* .pending_assign_card_status {
+  border: 2px solid purple;
+} */
 
 .pending_assign_card_status button {
   font-weight: 500;
@@ -120,6 +130,10 @@
 /* _____________________________ */
 
 /* Active__ */
+
+/* .pending_assign_card_file {
+  border: 2px solid purple;
+} */
 
 .pending_assign_active_pdf {
   color: #ffffff;
@@ -264,3 +278,181 @@
 }
 
 /* Assignment mark modal style__END */
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .pending_assign_card_container {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .pending_assign_card_title {
+    width: 40%;
+  }
+
+  .pending_assign_card_title h2 {
+    font-size: 1.3rem;
+  }
+
+  .pending_assign_card_title p {
+    font-size: 16px;
+  }
+
+  .pending_assign_card_mark h2 {
+    font-size: 16px;
+  }
+
+  .pending_assign_card_status button {
+    font-size: 16px;
+  }
+
+  .pending_assign_active_pdf {
+    font-size: 16px;
+  }
+
+  .pending_assign_none_active_pdf {
+    font-size: 16px;
+  }
+
+  .assign_mark_btn {
+    font-size: 16px;
+  }
+
+  .transparent_assign_mark_btn {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .pending_assign_card_container {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .pending_assign_number {
+    width: 3%;
+  }
+
+  .pending_assign_card_title h2 {
+    font-size: 1.2rem;
+  }
+
+  .pending_assign_card_status {
+    width: 21%;
+  }
+
+  .pending_assign_card_status button {
+    font-size: 14px;
+  }
+
+  .pending_assign_card_file {
+    width: 19%;
+  }
+
+  .pending_assign_active_pdf {
+    font-size: 14px;
+  }
+
+  .pending_assign_none_active_pdf {
+    font-size: 14px;
+  }
+
+  .assign_mark_btn {
+    font-size: 14px;
+  }
+
+  .transparent_assign_mark_btn {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pending_assign_card_container {
+    flex-direction: column;
+  }
+
+  .pending_assign_number {
+    width: 100%;
+  }
+
+  .pending_assign_card_title {
+    width: 100%;
+  }
+
+  .pending_assign_card_title h2 {
+    font-size: 1.3rem;
+  }
+
+  .pending_assign_card_title p {
+    font-size: 18px;
+  }
+
+  .pending_assign_card_mark {
+    width: 100%;
+  }
+
+  .pending_assign_card_status {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .assign_pending_status_btn {
+    width: 50%;
+    padding: 8px 15px;
+  }
+
+  .assign_completed_status_btn {
+    width: 50%;
+    padding: 8px 15px;
+  }
+
+  .none_active_assign_style {
+    width: 50%;
+    padding: 8px 15px;
+  }
+
+  .active_assign_style {
+    width: 50%;
+    padding: 8px 15px;
+  }
+
+  .pending_assign_card_file {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .pending_assign_active_pdf {
+    width: 50%;
+    font-size: 16px;
+    padding: 6px 20px;
+  }
+
+  .pending_assign_none_active_pdf {
+    width: 50%;
+    font-size: 16px;
+    padding: 6px 20px;
+  }
+
+  .assign_mark_btn {
+    width: 50%;
+    padding: 6px 20px;
+    font-size: 16px;
+  }
+
+  .transparent_assign_mark_btn {
+    width: 50%;
+    padding: 6px 20px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+}
+
+@media screen and (max-width: 475px) {
+}
