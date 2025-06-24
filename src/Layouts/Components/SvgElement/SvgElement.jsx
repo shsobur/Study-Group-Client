@@ -27,21 +27,21 @@ const SvgElement = () => {
                   href="#gentle-wave"
                   x="48"
                   y="0"
-                  fill="rgba(30,30,30,0.7)"
+                  fill="rgba(0,0, 0, 0.200)"
                 />
                 <use
                   href="#gentle-wave"
                   x="48"
                   y="3"
-                  fill="rgba(0,0,0,0.5)"
+                  fill="rgba(0,0, 0, 0.500)"
                 />
                 <use
                   href="#gentle-wave"
                   x="48"
                   y="5"
-                  fill="rgba(0,0,0,0.3)"
+                  fill="rgb(0, 0, 0, 0.600)"
                 />
-                <use href="#gentle-wave" x="48" y="7" fill="#000000" />
+                <use href="#gentle-wave" x="48" y="7" fill="#0c0619" />
               </g>
             </svg>
           </div>

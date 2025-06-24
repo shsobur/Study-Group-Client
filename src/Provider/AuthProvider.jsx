@@ -107,8 +107,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         const userEmail = { email: currentUser.email };
 
-        axiosPublic.post("/jwt", userEmail, {withCredentials: true}).then((res) => {
-          console.log(res.data);
+        axiosPublic.post("/jwt", userEmail, {withCredentials: true}).then(() => {
         });
       }
 

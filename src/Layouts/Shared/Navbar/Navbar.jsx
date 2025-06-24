@@ -150,7 +150,6 @@ const Navbar = () => {
                       alt="User"
                       title={user.email}
                       onError={(e) => {
-                        console.log("Image failed:", user.photoURL);
                         e.target.src = "https://i.pravatar.cc/150?img=3"; // fallback
                       }}
                     />

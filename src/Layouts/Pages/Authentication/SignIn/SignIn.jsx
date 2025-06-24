@@ -49,9 +49,8 @@ const SignIn = () => {
         });
         navigate(from, { replace: true });
       })
-      .catch((error) => {
+      .catch(() => {
         setError("Invalid! user or password. Try again");
-        console.log(error);
       });
   };
 

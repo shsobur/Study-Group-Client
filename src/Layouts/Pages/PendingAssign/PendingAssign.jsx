@@ -22,7 +22,6 @@ const PendingAssign = () => {
 
   const [pendingAssignments, setPendingAssignments] = useState([]);
   const [singleAssignment, setSingleAssignment] = useState(null);
-  console.log(singleAssignment);
   const [assignmentId, setAssignmentId] = useState(null);
   const [errors, setErrors] = useState({});
   const [marks, setMarks] = useState({
