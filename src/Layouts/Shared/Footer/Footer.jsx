@@ -18,7 +18,7 @@ const Footer = () => {
             <div className="footer_content_top_container">
               <div id="footer_box-1" className="main_footer_title_container">
                 <div className="footer_main_title_container">
-                  <h2>PayTrack</h2>
+                  <h2>Study Group</h2>
                 </div>
 
                 <p>
@@ -64,13 +64,16 @@ const Footer = () => {
                   <Link to="/">Home</Link>
                 </p>
                 <p>
-                  <Link to="/bill">Bill</Link>
+                  <Link to="/assignments">Assignments</Link>
                 </p>
                 <p>
-                  <Link to="/about">About</Link>
+                  <Link to="/pending-assignments">Pending Assignments</Link>
                 </p>
                 <p>
-                  <Link to="/contact">Contact Us</Link>
+                  <Link to="/my-assignments">My Assignment</Link>
+                </p>
+                <p>
+                  <Link to="/create-assignments">Create Assignments</Link>
                 </p>
               </div>
 
@@ -90,7 +93,7 @@ const Footer = () => {
                   <p>
                     <MdOutlineLocationOn />
                   </p>
-                  <h3>124 Brooklyn, New York</h3>
+                  <h3>Bangladesh, Barisal, Bhola</h3>
                 </div>
 
                 <div className="footer_contact_info_container">
