@@ -1,4 +1,5 @@
 // File path__
+import About from "../About/About";
 import Banner from "../Banner/Banner";
 import Benefit from "../Benefit/Benefit";
 
@@ -7,6 +8,7 @@ const HomePageLayout = () => {
     <>
       <section >
         <Banner></Banner>
+        <About></About>
         <Benefit></Benefit>
       </section>
     </>
