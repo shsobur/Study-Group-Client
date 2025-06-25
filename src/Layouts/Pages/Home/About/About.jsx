@@ -19,10 +19,10 @@ const About = () => {
               <header>
                 <h2>
                   {num === 1
-                    ? "Watchtower"
+                    ? "Study"
                     : num === 2
-                    ? "Whispers in the Mist"
-                    : "The Pineapple in the Field"}
+                    ? "Assignment"
+                    : "Study Group"}
                 </h2>
                 <button
                   onClick={() => setCurrent(num === 3 ? 1 : num + 1)}
@@ -34,7 +34,7 @@ const About = () => {
 
               <div className="card_slider_content">
                 <img
-                  src={`https://picsum.photos/id/${
+                  src={`https://i.postimg.cc/KjdPt97c/study.jpg${
                     num === 1 ? 641 : num === 2 ? 634 : 824
                   }/200/200`}
                   alt="Slide Visual"
@@ -44,79 +44,83 @@ const About = () => {
                   {num === 1 && (
                     <>
                       <p>
-                        A lone watchtower stands by the moaning shore,
+                        A quiet desk waits under evening's glow,
                         <br />
-                        Its shadow long, though eyes watch no more.
+                        Its books stacked high, each thought in a row.
                         <br />
-                        Salt-kissed winds whisper secrets of the sea,
+                        The ticking clock marks knowledge’s climb,
                         <br />
-                        But no soul stirs in its silent decree.
+                        As pages turn with the weight of time.
                       </p>
+
                       <p>
-                        Once it scanned the horizon, steadfast and proud,
+                        Minds once idle now burn with fire,
                         <br />
-                        Now only gulls cry beneath gathering cloud.
+                        Fueled by goals and deep desire.
                         <br />
-                        Rust etches poems in its weathered face,
+                        Notes like maps across the page,
                         <br />
-                        Time’s fingerprints left in every trace.
+                        Tracing paths both wise and sage.
                       </p>
+
                       <p>
-                        The tide comes and goes with a lover’s ache,
+                        The lamp hums soft in midnight air,
                         <br />
-                        Touching its base, then gently breaks.
+                        Guiding dreams shaped by care.
                         <br />
-                        It dreams in creaks and the scent of brine,
+                        Mistakes and wins both leave a mark,
                         <br />
-                        Of voices lost in the strands of time.
+                        In every light, and every dark.
                       </p>
+
                       <p>
-                        Yet still it stands, as dusk turns to night,
+                        And when the dawn breaks through the pane,
                         <br />
-                        A sentinel steeped in fading light—
+                        The effort echoes—not in vain.
                         <br />
-                        Lonely, yes, but never quite bare,
+                        For every hour poured in the night,
                         <br />
-                        For the sea and stars still know it's there.
+                        Becomes a step toward future’s light.
                       </p>
                     </>
                   )}
                   {num === 2 && (
                     <>
                       <p>
-                        The forest sleeps beneath a shroud of grey,
+                        Assignments guide the mind each day,
                         <br />
-                        Where dawn forgets to find its way.
+                        Helping thoughts not drift away.
                         <br />
-                        Each branch is cloaked in silver breath,
+                        They train the brain to think and try,
                         <br />
-                        Suspended still, in quiet death.
+                        To question how, to wonder why.
                       </p>
                       <p>
-                        No bird dares break the woven hush,
+                        Each task we take, each word we write,
                         <br />
-                        No footstep stirs the softened brush.
+                        Builds stronger skills, both sharp and bright.
                         <br />
-                        Only the mist moves, slow and thin,
+                        They show our gaps, reveal what’s clear,
                         <br />
-                        Like ghostly fingers drawing in.
+                        And bring our distant goals more near.
                       </p>
                       <p>
-                        Moss clings tight to oaken skin,
+                        Step by step, we learn and grow,
                         <br />
-                        Guarding secrets held within.
+                        Through every challenge assignments show.
                         <br />
-                        And somewhere deep, beyond the veil,
+                        With effort placed in every line,
                         <br />
-                        Old echoes ride the morning pale.
+                        We shape a future strong and fine.
                       </p>
                       <p>
-                        A place of dreams, or things once lost,
+                        So though they may seem hard or long,
                         <br />
-                        Where time forgets and paths are crossed.
+                        They make our weak parts wise and strong.
                         <br />
-                        The forest waits with breath held tight—
-                        <br />A world between the dark and light.
+                        For every page and every part—
+                        <br />
+                        An assignment builds a better heart.
                       </p>
                     </>
                   )}
