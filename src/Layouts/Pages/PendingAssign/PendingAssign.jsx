@@ -1,5 +1,6 @@
 // File path__
 import "./PendingAssign.css";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 // Package__
 import { MdOutlineFileDownload } from "react-icons/md";
@@ -127,6 +128,7 @@ const PendingAssign = () => {
 
   return (
     <>
+      <ScrollToTop></ScrollToTop>
       <section id="pending_assignment_section">
         <div className="main_pending_assign_container">
           <h1 className="pending_assign_title">Pending Assignments</h1>
@@ -145,7 +147,8 @@ const PendingAssign = () => {
               <div className="no_attempted_assign_message my-20">
                 <h1>
                   <i>
-                    You don't have any_ <br />pending assignments!
+                    You don't have any_ <br />
+                    pending assignments!
                   </i>
                 </h1>
               </div>

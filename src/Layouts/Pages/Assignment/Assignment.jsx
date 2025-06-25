@@ -3,6 +3,7 @@ import "./Assignment.css";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import AssignCard from "../../Components/AssignCard/AssignCard";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 // From react__
 import { useContext, useEffect, useState } from "react";
@@ -33,6 +34,7 @@ const Assignment = () => {
 
   return (
     <>
+      <ScrollToTop></ScrollToTop>
       <section id="assignment_section">
         <div className="main_assignment_container">
           <h1 className="assignment_title_container">Find Your Assignment</h1>

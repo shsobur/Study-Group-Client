@@ -2,6 +2,7 @@
 import "./AssignDetails.css";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 // Package__
 import Swal from "sweetalert2";
@@ -136,6 +137,7 @@ const AssignDetails = () => {
 
   return (
     <>
+    <ScrollToTop></ScrollToTop>
       <section id="assign_details_section">
         <div className="main_assign_details_container">
           <div className="assign_details_banner_container">

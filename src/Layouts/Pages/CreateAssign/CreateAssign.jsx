@@ -2,6 +2,7 @@
 import "./CreateAssign.css";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 // Package__
 import Swal from "sweetalert2";
@@ -23,7 +24,7 @@ const CreateAssign = () => {
   const [submitLoading, setSubmitLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   // Update question text at a specific index__
   const handleQuestionChange = (index, value) => {
@@ -86,6 +87,7 @@ const CreateAssign = () => {
 
   return (
     <>
+      <ScrollToTop></ScrollToTop>
       <section id="create_assign_section">
         <div className="main_create_assign_container">
           <div className="create_assign_title">

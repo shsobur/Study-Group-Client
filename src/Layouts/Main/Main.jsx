@@ -9,10 +9,6 @@ import { Outlet } from "react-router";
 import React from "react";
 
 const Main = () => {
-  // const pathOne = "/sign-in";
-  // const pathTwo = "/sign-up";
-  // const currentPath = window.location.pathname;
-
   return (
     <>
       <section>
