@@ -133,12 +133,21 @@ const PendingAssign = () => {
 
           <div className="pending_assign_card_parent_container">
             {pendingAssignLoading ? (
-              // This loading style is coming from "assignment component" (assignment.css)|
+              // This loading style is coming from "assignment component" (assignment.css)||
               <div className="loading_parent_container">
                 <div className="loading_container">
                   <p>Loading Data. . .</p>
                   <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
                 </div>
+              </div>
+            ) : pendingAssignments.length === 0 ? (
+              // This message content style is coming from "My Assignment component"(MyAssign.css)||
+              <div className="no_attempted_assign_message my-20">
+                <h1>
+                  <i>
+                    You don't have any_ <br />pending assignments!
+                  </i>
+                </h1>
               </div>
             ) : (
               <>

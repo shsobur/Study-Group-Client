@@ -53,7 +53,7 @@ const MyAssign = () => {
                 <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
               </div>
             </div>
-          ) : myAssignments === "" || myAssignments.length === 0 ? (
+          ) : myAssignments.length === 0 ? (
             <div className="no_attempted_assign_message">
               <h1>
                 <i>
