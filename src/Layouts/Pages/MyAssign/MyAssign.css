@@ -35,8 +35,6 @@
   color: transparent;
 }
 
-
-
 /* Assignment content style__ */
 
 .my_assign_card_parent_container {
@@ -54,9 +52,10 @@
 /* ____________________________ */
 
 .my_assign_number {
-  width: 3%;
+  width: 2%;
   font-size: 18px;
   font-weight: 700;
+  /* border: 2px solid purple; */
 }
 
 /* ____________________________ */
@@ -64,6 +63,7 @@
 
 .my_assign_card_title_container {
   width: 45%;
+  /* border: 2px solid purple; */
 }
 
 .my_assign_card_title_container h2 {
@@ -94,6 +94,7 @@
   font-size: 18px;
   color: #555454;
   flex-grow: 1;
+  /* border: 2px solid purple; */
 }
 
 .my_assign_mark_container b {
@@ -106,6 +107,7 @@
 
 .my_assign_status_container {
   flex-grow: 1;
+  /* border: 2px solid purple; */
 }
 
 .assign_pending_btn_style {
@@ -138,7 +140,6 @@
   border: 2px solid blue;
   color: blue;
 }
-
 
 /* Assignment message style__ */
 
@@ -219,4 +220,162 @@
 .feedBack_parent_container ul li {
   margin-top: 20px;
   font-size: 1.4rem;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .my_assign_number {
+    width: 3%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .my_assign_card_container {
+    gap: 5px;
+  }
+
+  .my_assign_number {
+    font-size: 16px;
+  }
+
+  .my_assign_card_title_container h2 {
+    font-size: 1.2rem;
+  }
+
+  .my_assign_card_title_container p {
+    font-size: 16px;
+  }
+
+  .my_assign_mark_container {
+    font-size: 16px;
+  }
+
+  .my_assign_status_container {
+    width: 25%;
+  }
+
+  .assign_pending_btn_style {
+    font-size: 16px;
+    padding: 4px 10px;
+  }
+
+  .assign_completed_btn_style {
+    font-size: 14px;
+    padding: 4px 9px;
+  }
+
+  .my_assign_file_container a {
+    font-size: 16px;
+  }
+
+  /* Pending assignment massage__ */
+
+  .assignment_pending_message {
+    padding: 10px;
+  }
+
+  .assignment_pending_message h1 {
+    line-height: 50px;
+  }
+
+  /* Assignment mark style__ */
+
+  .assignment_complete_message p {
+    line-height: 40px;
+  }
+
+  .feedBack_parent_container ul li {
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .my_assign_card_container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .my_assign_number,
+  .my_assign_card_title_container,
+  .my_assign_mark_container,
+  .my_assign_status_container,
+  .my_assign_file_container {
+    width: 100%;
+  }
+
+  .my_assign_number {
+    font-size: 18px;
+  }
+
+  .my_assign_card_title_container h2 {
+    font-size: 1.5rem;
+  }
+
+  .my_assign_card_title_container p {
+    font-size: 20px;
+  }
+
+  /* Assignment mark style__ */
+
+  .assignment_complete_message h1 {
+    font-size: 2.6rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .my_assign_card_title_container h2 {
+    font-size: 1.4rem;
+  }
+
+  /* Pending assignment massage__ */
+
+  .assignment_pending_message h1 {
+    font-size: 1.7rem;
+    line-height: 40px;
+  }
+
+  /* Assignment mark style__ */
+
+  .assignment_complete_message p {
+    font-size: 1.8rem;
+  }
+
+  .feedBack_parent_container ul li {
+    line-height: 30px;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .my_assign_card_title_container h2 {
+    font-size: 1.2rem;
+  }
+
+  .my_assign_card_title_container p {
+    font-size: 18px;
+  }
+
+  /* Assignment mark style__ */
+
+  .assignment_complete_message h1 {
+    font-size: 2rem;
+  }
+
+  .assignment_complete_message p {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .feedBack_parent_container h2 {
+    font-size: 1.5rem;
+  }
+
+  .feedBack_parent_container ul li {
+    line-height: 30px;
+    margin-top: 10px;
+    font-size: 16px;
+  }
 }

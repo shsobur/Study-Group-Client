@@ -44,10 +44,6 @@ const MyAssign = () => {
       <div className="main_my_assign_container">
         <h1 className="my_assign_title_container">Attempted Assignments</h1>
 
-        <div className="my_assign_info_container">
-          Total submit: {myAssignments.length}
-        </div>
-
         <div className="my_assign_card_parent_container">
           {myAssignLoading ? (
             // This loading style is coming from "assignment component" (assignment.css)|
@@ -57,11 +53,11 @@ const MyAssign = () => {
                 <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
               </div>
             </div>
-          ) : myAssignments === "" ? (
+          ) : myAssignments === "" || myAssignments.length === 0 ? (
             <div className="no_attempted_assign_message">
               <h1>
                 <i>
-                  You don't have attempted any_ <br /> assignment!
+                  You don't have attempted any_ <br /> assignments!
                 </i>
               </h1>
             </div>
@@ -127,6 +123,9 @@ const MyAssign = () => {
                   </div>
 
                   <div className="collapse-content text-sm">
+                    <hr />
+                    <hr />
+                    <br />
                     <hr />
                     <hr />
                     <br />
