@@ -4,6 +4,11 @@ StudyGroup is a full-stack group study application designed to enhance collabora
 
 ---
 
+## Live Demo
+
+Check out the live version of the StudyGroup app here:  
+[https://study-group-cb18a.web.app/]
+
 ## Features
 
 - **User Authentication:** Secure login and registration system using JWT to protect user data.
