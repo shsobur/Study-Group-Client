@@ -1,7 +1,5 @@
 .main_banner_section_container {
   height: calc(100vh - 60px);
-  max-width: 1920px;
-  margin: auto;
   position: relative;
   background-color: #0c0619;
 }
