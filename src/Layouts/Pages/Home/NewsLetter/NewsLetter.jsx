@@ -13,7 +13,7 @@ const NewsLetter = () => {
                 gems, <br></br> and a sprinkle of fun. Because learning should
                 feel like a treat.
               </p>
-              <div className="news_letter_input_container">
+              <div className="news_letter_input_container"> 
                 <input
                   type="text"
                   placeholder="Enter you valid email address"

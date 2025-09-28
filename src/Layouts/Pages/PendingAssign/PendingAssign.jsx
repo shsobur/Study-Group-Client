@@ -4,6 +4,7 @@ import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 // Package__
 import { MdOutlineFileDownload } from "react-icons/md";
+import emailjs from "@emailjs/browser";
 
 // Form react__
 import { useContext, useEffect, useState } from "react";
@@ -78,7 +79,7 @@ const PendingAssign = () => {
     }));
   };
 
-  // Download assignment PDF using base64 encoded data (This download logic was created with the help of AI!)
+  // Download assignment PDF using base64 encoded data__
   const handleAssignmentPDF = (file) => {
     const link = document.createElement("a");
 
@@ -101,6 +102,8 @@ const PendingAssign = () => {
 
   // Submit total marks and feedback for the selected assignment__
   const handleAssignmentMark = async () => {
+    console.log(singleAssignment.userEmail);
+
     const assignmentMark = {
       totalMark: total,
       examinerFeedback: [
@@ -113,17 +116,52 @@ const PendingAssign = () => {
     };
 
     setAssignMarkLoading(true);
+
     const res = await axiosSecure.patch(
       `/assignment-mark/${assignmentId}`,
       assignmentMark
     );
+
     if (res.data.modifiedCount === 1) {
+      // Send email to user__
+      sendEmail(
+        singleAssignment.userEmail,
+        total,
+        assignmentMark.examinerFeedback
+      );
+
       setAssignMarkLoading(false);
       setAssignmentId(null);
+
       handlePendingAssignments();
       document.getElementById("modal_close_btn").click();
-      Swal.fire("Assignment mark submitted successfully!");
+
+      Swal.fire({
+        title: "Assignment mark submitted successfully!",
+        icon: "success",
+        draggable: true,
+      });
     }
+  };
+
+  const sendEmail = (userEmail, totalMark, feedbackList) => {
+    emailjs
+      .send(
+        "service_drfopbn",
+        "template_z13mrrx",
+        {
+          user_email: userEmail,
+          total_mark: totalMark,
+          feedback: feedbackList.join("<br/>"),
+        },
+        "K2q-1Vudi3D-uQ5Gu"
+      )
+      .then(() => {
+        console.log("Success full")
+      })
+      .catch((err) => {
+        console.error("Failed:", err);
+      });
   };
 
   return (
@@ -363,7 +401,9 @@ const PendingAssign = () => {
                               <button className="form_submit">Working</button>
                             ) : (
                               <button
-                                onClick={handleAssignmentMark}
+                                onClick={() =>
+                                  handleAssignmentMark(assignment.userEmail)
+                                }
                                 className="form_submit"
                               >
                                 Submit
