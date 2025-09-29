@@ -209,7 +209,7 @@ const CreateAssign = () => {
                   <div className="assign_form_group">
                     <label>Image URL</label>
                     <input
-                      type="text"
+                      type="url"
                       placeholder="(Optional) But 'Recommenced'"
                       value={image}
                       onChange={(e) => setImage(e.target.value)}

@@ -1,6 +1,6 @@
 // File path__
 import "./AssignCard.css";
-import noImage from "../../../assets/noImage.jpeg"
+import noImage from "../../../assets/noImage.jpeg";
 
 // Package__
 import { Link } from "react-router";
@@ -31,7 +31,7 @@ const AssignCard = ({ assignment }) => {
             <a href="#" className="hero-image-container">
               <img
                 className="hero-image"
-                src={image === null || "" ? noImage : image}
+                src={image === null || image === "" ? noImage : image}
                 alt="Assignment image"
               />
             </a>
