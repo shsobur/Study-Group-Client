@@ -39,16 +39,38 @@ const AssignDetails = () => {
 
   // Check if the current user already submitted the assignment__
   useEffect(() => {
-    setCheckingLoading(true);
-    axiosSecure
-      .get("/check-submitted-assignment", {
-        params: { topicName, userEmail: user?.email },
-      })
-      .then((res) => {
-        setIsSubmitted(res.data.exists);
-        setCheckingLoading(false);
-      });
+    if (user) {
+      setCheckingLoading(true);
+      axiosSecure
+        .get("/check-submitted-assignment", {
+          params: { topicName, userEmail: user?.email },
+        })
+        .then((res) => {
+          setIsSubmitted(res.data.exists);
+          setCheckingLoading(false);
+        });
+    }
   }, [axiosSecure, topicName, user]);
+
+  const checkUser = () => {
+    if (!user) {
+      Swal.fire({
+        title: "Please Sign In",
+        text: "To submit the assignment you have to be sign in. You would like to sign in now?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/sign-in");
+        }
+      });
+      return;
+    }
+    document.getElementById("assign_form_modal").showModal();
+  };
 
   // Handle file input and only accept PDF files__
   const handleFileChange = (e) => {
@@ -137,7 +159,7 @@ const AssignDetails = () => {
 
   return (
     <>
-    <ScrollToTop></ScrollToTop>
+      <ScrollToTop></ScrollToTop>
       <section id="assign_details_section">
         <div className="main_assign_details_container">
           <div className="assign_details_banner_container">
@@ -207,15 +229,7 @@ const AssignDetails = () => {
                     {isSubmitted ? (
                       <button>Pending Assignment...</button>
                     ) : (
-                      <button
-                        onClick={() =>
-                          document
-                            .getElementById("assign_form_modal")
-                            .showModal()
-                        }
-                      >
-                        Submit Assignment
-                      </button>
+                      <button onClick={checkUser}>Submit Assignment</button>
                     )}
                   </>
                 )}

@@ -1,5 +1,6 @@
 // File path__
 import "./AssignCard.css";
+import noImage from "../../../assets/noImage.jpeg"
 
 // Package__
 import { Link } from "react-router";
@@ -21,9 +22,6 @@ const AssignCard = ({ assignment }) => {
     createdTime,
     createdBy,
   } = assignment;
-
-  // Default image URL when no image is provided__
-  const noImage = "https://i.postimg.cc/mr6N2bMP/no-image.png";
 
   return (
     <>

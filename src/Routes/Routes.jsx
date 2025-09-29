@@ -31,9 +31,9 @@ const router = createBrowserRouter([
       {
         path: "/assignment-details/:id",
         element: (
-          <VerifyUser>
+          
             <AssignDetails></AssignDetails>
-          </VerifyUser>
+          
         ),
         loader: ({ params }) =>
           fetch(
