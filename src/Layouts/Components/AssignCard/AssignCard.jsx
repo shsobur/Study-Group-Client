@@ -32,7 +32,7 @@ const AssignCard = ({ assignment }) => {
               <img
                 className="hero-image"
                 src={image === null || image === "" ? noImage : image}
-                alt="Assignment image"
+                alt="Assignment image missing"
               />
             </a>
           </Link>
