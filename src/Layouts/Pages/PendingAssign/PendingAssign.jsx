@@ -1,17 +1,17 @@
 // File path__
 import "./PendingAssign.css";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { AuthContext } from "../../../Provider/AuthProvider";
 import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 // Package__
-import { MdOutlineFileDownload } from "react-icons/md";
+import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
+import { MdOutlineFileDownload } from "react-icons/md";
 
 // Form react__
-import { useContext, useEffect, useState } from "react";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { AuthContext } from "../../../Provider/AuthProvider";
 import { SlArrowLeftCircle } from "react-icons/sl";
-import Swal from "sweetalert2";
+import { useContext, useEffect, useState } from "react";
 
 const PendingAssign = () => {
   const axiosSecure = useAxiosSecure();
@@ -152,7 +152,7 @@ const PendingAssign = () => {
         {
           user_email: userEmail,
           total_mark: totalMark,
-          feedback: feedbackList.join("<br/>"),
+          feedback: feedbackList.join(", "),
         },
         "K2q-1Vudi3D-uQ5Gu"
       )

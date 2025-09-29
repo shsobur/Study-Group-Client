@@ -248,7 +248,7 @@ nav {
 
 @media screen and (max-width: 1280px) {
   nav {
-    margin-bottom: 70px;
+    margin-bottom: 60px;
   }
 
   .navbar_logo {
@@ -267,6 +267,10 @@ nav {
 @media screen and (max-width: 1024px) {
   .navbar_logo span {
     font-size: 1.7rem;
+  }
+
+  nav {
+    margin-bottom: 51px;
   }
 
   .navbar_logo img {
@@ -310,7 +314,7 @@ nav {
 
 @media screen and (max-width: 640px) {
   nav {
-    margin-bottom: 60px;
+    margin-bottom: 49px;
   }
 
   .navbar_logo span {
@@ -329,7 +333,7 @@ nav {
 
 @media screen and (max-width: 475px) {
   nav {
-    margin-bottom: 55px;
+    margin-bottom: 46px;
   }
 
   .navbar_logo span {

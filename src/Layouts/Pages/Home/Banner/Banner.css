@@ -48,6 +48,9 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .main_banner_section_container {
+    height: calc(100vh - 51px);
+  }
   .banner_title_container h1 {
     font-size: 3rem;
   }

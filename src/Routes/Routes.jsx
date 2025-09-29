@@ -1,5 +1,6 @@
 // File path__
 import Main from "../Layouts/Main/Main";
+import VerifyUser from "../VerifyUser/VerifyUser";
 import MyAssign from "../Layouts/Pages/MyAssign/MyAssign";
 import ErrorPage from "../Layouts/Components/Error/ErrorPage";
 import Assignment from "../Layouts/Pages/Assignment/Assignment";
@@ -12,7 +13,6 @@ import HomePageLayout from "../Layouts/Pages/Home/HomePageLayout/HomePageLayout"
 
 // Package__
 import { createBrowserRouter } from "react-router";
-import VerifyUser from "../VerifyUser/VerifyUser";
 
 const router = createBrowserRouter([
   {
@@ -30,11 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/assignment-details/:id",
-        element: (
-          
-            <AssignDetails></AssignDetails>
-          
-        ),
+        element: <AssignDetails></AssignDetails>,
         loader: ({ params }) =>
           fetch(
             `${import.meta.env.VITE_SERVER_API}/assignment-details/${

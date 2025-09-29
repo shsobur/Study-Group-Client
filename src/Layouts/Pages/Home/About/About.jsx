@@ -1,10 +1,10 @@
-// File path__
 import "./About.css";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const About = () => {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const slides = [
     {
@@ -18,9 +18,9 @@ const About = () => {
         "Minds once idle now burn with fire,",
         "Fueled by goals and deep desire.",
         "Notes like maps across the page,",
-        "Tracing paths both wise and sage."
+        "Tracing paths both wise and sage.",
       ],
-      color: "#7e57c2"
+      color: "#7e57c2",
     },
     {
       title: "Assignment",
@@ -33,9 +33,9 @@ const About = () => {
         "Each task we take, each word we write,",
         "Builds stronger skills, both sharp and bright.",
         "They show our gaps, reveal what's clear,",
-        "And bring our distant goals more near."
+        "And bring our distant goals more near.",
       ],
-      color: "#5e35b1"
+      color: "#5e35b1",
     },
     {
       title: "Study Group",
@@ -48,10 +48,10 @@ const About = () => {
         "The carrots laughed, 'You're not from here!'",
         "The turnips jeered, 'Go disappear!'",
         "But Pineapple puffed his leafy crown,",
-        "And said, 'I'm tropic royalty, calm down.'"
+        "And said, 'I'm tropic royalty, calm down.'",
       ],
-      color: "#4527a0"
-    }
+      color: "#4527a0",
+    },
   ];
 
   const nextSlide = () => {
@@ -69,39 +69,63 @@ const About = () => {
     setCurrent(index);
   };
 
-  // Auto slide every 5 seconds
+  // Auto slide with pause on hover/touch
   useEffect(() => {
+    if (!isAutoPlaying) return;
+
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
-  }, [current]);
+  }, [current, isAutoPlaying]);
+
+  const handleInteractionStart = () => setIsAutoPlaying(false);
+  const handleInteractionEnd = () => setIsAutoPlaying(true);
 
   return (
     <section id="about_section">
       <div className="slider_wrapper">
         <div className="slider_container">
-          <div className="slider_track" style={{ '--current': current, '--direction': direction }}>
+          <div
+            className="slider_track"
+            style={{ "--current": current, "--direction": direction }}
+            onMouseEnter={handleInteractionStart}
+            onMouseLeave={handleInteractionEnd}
+            onTouchStart={handleInteractionStart}
+          >
             {slides.map((slide, index) => (
-              <div 
+              <div
                 key={index}
-                className={`slide ${index === current ? 'active' : ''} ${
-                  index === (current - 1 + slides.length) % slides.length ? 'prev' : ''
-                } ${index === (current + 1) % slides.length ? 'next' : ''}`}
-                style={{ '--slide-color': slide.color }}
+                className={`slide ${index === current ? "active" : ""} ${
+                  index === (current - 1 + slides.length) % slides.length
+                    ? "prev"
+                    : ""
+                } ${index === (current + 1) % slides.length ? "next" : ""}`}
+                style={{ "--slide-color": slide.color }}
               >
                 <div className="slide_content">
                   <div className="slide_header">
                     <div className="title_section">
-                      <div className="icon_circle">
-                        {slide.icon}
+                      <div className="icon_circle">{slide.icon}</div>
+                      <div className="title_text">
+                        <h2>{slide.title}</h2>
+                        <div className="slide_indicator">
+                          {index + 1} / {slides.length}
+                        </div>
                       </div>
-                      <h2>{slide.title}</h2>
                     </div>
-                    
+
                     <div className="navigation_buttons">
-                      <button onClick={prevSlide} className="nav_btn prev_btn">
+                      <button
+                        onClick={prevSlide}
+                        className="nav_btn prev_btn"
+                        aria-label="Previous slide"
+                      >
                         ‹
                       </button>
-                      <button onClick={nextSlide} className="nav_btn next_btn">
+                      <button
+                        onClick={nextSlide}
+                        className="nav_btn next_btn"
+                        aria-label="Next slide"
+                      >
                         ›
                       </button>
                     </div>
@@ -111,10 +135,11 @@ const About = () => {
                     <div className="image_section">
                       <div className="image_wrapper">
                         <img
-                          src={`https://i.postimg.cc/KjdPt97c/study.jpg${
+                          src={`https://picsum.photos/id/${
                             index === 0 ? 641 : index === 1 ? 634 : 824
                           }/500/400`}
                           alt={slide.title}
+                          loading="lazy"
                         />
                         <div className="image_overlay"></div>
                       </div>
@@ -137,10 +162,7 @@ const About = () => {
 
           {/* Progress Bar */}
           <div className="progress_container">
-            <div 
-              className="progress_bar" 
-              key={current}
-            ></div>
+            <div className="progress_bar" key={current}></div>
           </div>
 
           {/* Dots Navigation */}
@@ -148,7 +170,7 @@ const About = () => {
             {slides.map((_, index) => (
               <button
                 key={index}
-                className={`dot ${index === current ? 'active' : ''}`}
+                className={`dot ${index === current ? "active" : ""}`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to slide ${index + 1}`}
               />

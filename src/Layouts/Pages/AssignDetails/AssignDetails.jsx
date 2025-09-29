@@ -162,12 +162,6 @@ const AssignDetails = () => {
       <ScrollToTop></ScrollToTop>
       <section id="assign_details_section">
         <div className="main_assign_details_container">
-          <div className="assign_details_banner_container">
-            <img
-              src="https://i.postimg.cc/bwvm9cjf/assign-banner.jpg"
-              alt="Assignment banner"
-            />
-          </div>
 
           <div className="assign_details_info_parent_container">
             <div className="assign_info_container">
