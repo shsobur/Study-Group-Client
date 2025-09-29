@@ -1,6 +1,5 @@
-import React from "react";
-import { FaMagic, FaUsers } from "react-icons/fa";
 import { VscChecklist } from "react-icons/vsc";
+import { FaMagic, FaUsers } from "react-icons/fa";
 
 const About = () => {
   return (

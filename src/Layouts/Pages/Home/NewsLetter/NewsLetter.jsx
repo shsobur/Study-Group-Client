@@ -92,7 +92,7 @@ const Newsletter = () => {
         <div className="news_letter_image" aria-hidden="true">
           <div className="image_wrapper">
             <img
-              src="https://images.unsplash.com/photo-1551836026-d5c88ac5d2f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+              src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZHl8ZW58MHx8MHx8fDA%3D"
               alt="Newsletter illustration"
               loading="lazy"
             />
